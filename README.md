@@ -1,4 +1,4 @@
-English | [简体中文](https://github.com/imgcook-dsl/react-Ifeng-standard/blob/master/README.zh-CN.md)xxxx
+English | [简体中文](https://github.com/imgcook-dsl/react-Ifeng-standard/blob/master/README.zh-CN.md)
 
 ## Abstract
 
