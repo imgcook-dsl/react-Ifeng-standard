@@ -9,8 +9,11 @@ module.exports = function(schema, option) {
   // imports
   const imports = [];
 
-  // inline style
+  // js样式
   const style = {};
+
+  // css样式
+  const cssStyles = [];
 
   // Global Public Functions
   const utils = [];
@@ -45,40 +48,6 @@ module.exports = function(schema, option) {
 
     return String(value);
   };
-
-  // convert to responsive unit, such as vw ： 样式
-  const parseStyle = (style) => {
-    for (let key in style) {
-      switch (key) {
-        case 'fontSize':
-        case 'marginTop':
-        case 'marginBottom':
-        case 'paddingTop':
-        case 'paddingBottom':
-        case 'height':
-        case 'top':
-        case 'bottom':
-        case 'width':
-        case 'maxWidth':
-        case 'left':
-        case 'right':
-        case 'paddingRight':
-        case 'paddingLeft':
-        case 'marginLeft':
-        case 'marginRight':
-        case 'lineHeight':
-        case 'borderBottomRightRadius':
-        case 'borderBottomLeftRadius':
-        case 'borderTopRightRadius':
-        case 'borderTopLeftRadius':
-        case 'borderRadius':
-          style[key] = (parseInt(style[key]) / _w).toFixed(2) + 'vw';
-          break;
-      }
-    }
-
-    return style;
-  }
 
   // 转换 function, return params and content
   const parseFunction = (func) => {
@@ -207,6 +176,91 @@ module.exports = function(schema, option) {
     })`;
   }
 
+  // 转换样式style
+  const parseStyle = (style) => {
+    for (let key in style) {
+      switch (key) {
+        case 'fontSize':
+        case 'marginTop':
+        case 'marginBottom':
+        case 'paddingTop':
+        case 'paddingBottom':
+        case 'height':
+        case 'top':
+        case 'bottom':
+        case 'width':
+        case 'maxWidth':
+        case 'left':
+        case 'right':
+        case 'paddingRight':
+        case 'paddingLeft':
+        case 'marginLeft':
+        case 'marginRight':
+        case 'lineHeight':
+        case 'borderBottomRightRadius':
+        case 'borderBottomLeftRadius':
+        case 'borderTopRightRadius':
+        case 'borderTopLeftRadius':
+        case 'borderRadius':
+          style[key] = (parseInt(style[key]) / _w).toFixed(2) + 'vw';
+          break;
+      }
+    }
+
+    return style;
+  }
+  // 转换样式css
+  const parseCss = (style, options) => {
+    let cssStyle = ``
+    const isCss = options && options.type === 'css'
+    for (let key in style) {
+      switch (key) {
+        case 'fontSize':
+        case 'marginTop':
+        case 'marginBottom':
+        case 'paddingTop':
+        case 'paddingBottom':
+        case 'height':
+        case 'top':
+        case 'bottom':
+        case 'width':
+        case 'maxWidth':
+        case 'left':
+        case 'right':
+        case 'paddingRight':
+        case 'paddingLeft':
+        case 'marginLeft':
+        case 'marginRight':
+        case 'lineHeight':
+        case 'borderBottomRightRadius':
+        case 'borderBottomLeftRadius':
+        case 'borderTopRightRadius':
+        case 'borderTopLeftRadius':
+        case 'borderRadius':
+          style[key] = (parseInt(style[key]) / _w).toFixed(2) + 'vw';
+          break;
+      }
+      if(isCss) {
+        const formatKey = (key) => {
+          const reg = /[A-Z]/
+          const formatKey = key
+            .split('')
+            .map((char, index, arr) => {
+              if(reg.test(char)) {
+                return `-${char.toLowerCase()}`       
+              }
+              return char
+            })
+          return formatKey.join('')
+        }
+        const cssKey = formatKey(key)
+        if(cssKey !== 'background-image') {
+          cssStyle += `${cssKey}:${style[key]};`
+        }
+      }
+    }
+    return cssStyle
+  }
   // 渲染xml
   const generateRender = (schema) => {
     // 组件类型
@@ -215,9 +269,13 @@ module.exports = function(schema, option) {
     const className = schema.props && schema.props.className;
     // 样式名
     const classString = className ? ` style={styles.${className}}` : '';
+
     // 生成样式
     if (className) {
+      //parseStyle 样式
       style[className] = parseStyle(schema.props.style);
+      //parseCss 样式
+      cssStyles.push(`.${className}{${parseCss(schema.props.style, {type: 'css'})}}`);
     }
 
     let xml;
@@ -358,10 +416,17 @@ module.exports = function(schema, option) {
   // 转换schema
   transform(schema);
 
+  // babel代码格式
   const prettierOpt = {
     parser: 'babel',
     printWidth: 120,
     singleQuote: true
+  };
+
+  // css代码格式
+  const cssPrettierOpt = {
+    parser: 'css',
+    printWidth: 120,
   };
 
   // 返回值
@@ -383,7 +448,13 @@ module.exports = function(schema, option) {
         `, prettierOpt),
         panelType: 'js',
       },
-      // 样式
+      // css样式
+      {
+        panelName: `style.css`,
+        panelValue: prettier.format(`${cssStyles.join('\n')}`, cssPrettierOpt),
+        panelType: 'css'
+      },
+      // js样式
       {
         panelName: `style.js`,
         panelValue: prettier.format(`export default ${toString(style)}`, prettierOpt),

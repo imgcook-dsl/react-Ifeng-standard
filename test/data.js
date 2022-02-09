@@ -1,4 +1,4 @@
-// 吃透schema
+// schema
 module.exports = {
   "componentName": "Page", // 组件名
   "id": "Block_745855",

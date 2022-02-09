@@ -4,7 +4,7 @@ export default {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',
-    height: '71.20vw'
+    height: '9.47vw'
   },
   bd: {
     display: 'flex',
@@ -12,40 +12,33 @@ export default {
     alignItems: 'flex-start',
     flexDirection: 'row',
     opacity: '1.00',
-    width: '45.60vw',
-    height: '45.60vw'
+    width: '6.00vw',
+    height: '6.00vw'
   },
-  layer: {
-    position: 'absolute',
-    top: '0.00vw',
-    left: '0.00vw',
-    width: '45.60vw',
-    height: '45.60vw',
-    overflow: 'hidden'
-  },
-  bg: { position: 'absolute', top: '0.00vw', left: '0.00vw', opacity: '1.00', width: '45.60vw', height: '45.60vw' },
+  layer: { position: 'absolute', top: '0.00vw', left: '0.00vw', width: '6.00vw', height: '6.00vw', overflow: 'hidden' },
+  bg: { position: 'absolute', top: '0.00vw', left: '0.00vw', opacity: '1.00', width: '6.00vw', height: '6.00vw' },
   wrap: {
     boxSizing: 'border-box',
     display: 'flex',
     position: 'relative',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: '2.40vw',
-    marginLeft: '2.40vw',
-    borderRadius: '2.00vw',
+    marginTop: '0.27vw',
+    marginLeft: '0.27vw',
+    borderRadius: '0.27vw',
     backgroundColor: 'rgba(0,0,0,0.40)',
-    paddingRight: '1.20vw',
-    paddingLeft: '1.33vw',
-    height: '4.00vw'
+    paddingRight: '0.13vw',
+    paddingLeft: '0.13vw',
+    height: '0.53vw'
   },
-  riverdinwei: { opacity: '1.00', width: '1.87vw', height: '2.40vw' },
+  riverdinwei: { opacity: '1.00', width: '0.13vw', height: '0.27vw' },
   distance: {
-    marginLeft: '0.53vw',
-    height: '2.93vw',
+    marginLeft: '0.00vw',
+    height: '0.27vw',
     fontWeight: 400,
-    fontSize: '2.40vw',
+    fontSize: '0.27vw',
     color: '#ffffff',
-    lineHeight: '2.93vw',
+    lineHeight: '0.27vw',
     whiteSpace: 'nowrap'
   },
   main: {
@@ -54,17 +47,17 @@ export default {
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    width: '45.60vw',
-    height: '15.20vw'
+    width: '6.00vw',
+    height: '2.00vw'
   },
   title: {
-    marginTop: '2.93vw',
-    width: '40.00vw',
-    height: '11.73vw',
+    marginTop: '0.27vw',
+    width: '5.33vw',
+    height: '1.47vw',
     fontWeight: 400,
-    fontSize: '4.00vw',
+    fontSize: '0.53vw',
     color: '#333333',
-    lineHeight: '5.87vw',
+    lineHeight: '0.67vw',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
@@ -74,35 +67,35 @@ export default {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderBottomLeftRadius: '1.60vw',
-    borderBottomRightRadius: '1.60vw',
+    borderBottomLeftRadius: '0.13vw',
+    borderBottomRightRadius: '0.13vw',
     backgroundColor: '#ffffff',
-    paddingRight: '2.27vw',
-    paddingLeft: '2.40vw',
-    width: '45.60vw',
-    height: '10.40vw',
+    paddingRight: '0.27vw',
+    paddingLeft: '0.27vw',
+    width: '6.00vw',
+    height: '1.33vw',
     overflow: 'hidden'
   },
-  block: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '4.00vw' },
-  xianjin: { width: '4.00vw', height: '4.00vw' },
+  block: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '0.53vw' },
+  xianjin: { width: '0.53vw', height: '0.53vw' },
   fashionHome: {
-    marginLeft: '0.80vw',
-    height: '3.73vw',
+    marginLeft: '0.00vw',
+    height: '0.40vw',
     fontWeight: 300,
-    fontSize: '3.20vw',
+    fontSize: '0.40vw',
     color: '#666666',
-    lineHeight: '3.73vw',
+    lineHeight: '0.40vw',
     whiteSpace: 'nowrap'
   },
-  group: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '4.00vw' },
-  favorite: { width: '2.93vw', height: '2.93vw' },
+  group: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '0.53vw' },
+  favorite: { width: '0.27vw', height: '0.27vw' },
   num: {
-    marginLeft: '0.67vw',
-    height: '3.47vw',
+    marginLeft: '0.00vw',
+    height: '0.40vw',
     fontWeight: 400,
-    fontSize: '2.93vw',
+    fontSize: '0.27vw',
     color: '#999999',
-    lineHeight: '3.47vw',
+    lineHeight: '0.40vw',
     whiteSpace: 'nowrap'
   }
 };
