@@ -1,5 +1,6 @@
+// 吃透schema
 module.exports = {
-  "componentName": "Page",
+  "componentName": "Page", // 组件名
   "id": "Block_745855",
   "rect": {
     "x": 0,
@@ -8,7 +9,9 @@ module.exports = {
     "height": 534
   },
   "smart": {},
+  // 外部数据
   "props": {
+    //样式
     "style": {
       "display": "flex",
       "flexDirection": "row",
@@ -16,6 +19,7 @@ module.exports = {
       "alignItems": "flex-start",
       "height": "534px"
     },
+    // 类名
     "className": "box"
   },
   "children": [{
@@ -382,6 +386,7 @@ module.exports = {
       
     }
   },
+  // 数据源
   "dataSource": {
     "list": [{
       "id": "fetch_example",
@@ -414,6 +419,7 @@ module.exports = {
       }
     }]
   },
+  //静态数据
   "state": {
     "data": [{
       "title": "小户型卫浴怎样才能装得高大上？",

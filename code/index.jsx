@@ -5,7 +5,7 @@ import { fetch } from 'whatwg-fetch';
 import jsonp from 'fetch-jsonp';
 import styles from './style.js';
 const print = function(value) {
-  console.log(value);
+  // console.log(value);
 };
 class Page_0 extends Component {
   state = {
