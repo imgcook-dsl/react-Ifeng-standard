@@ -131,3 +131,136 @@
   line-height: 0.4vw;
   white-space: nowrap;
 }
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 0.13vw;
+}
+.bd {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: row;
+  opacity: 1;
+  width: 0vw;
+  height: 0vw;
+}
+.layer {
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+  width: 0vw;
+  height: 0vw;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+  opacity: 1;
+  width: 0vw;
+  height: 0vw;
+}
+.wrap {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 0vw;
+  margin-left: 0vw;
+  border-radius: 0vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-right: 0vw;
+  padding-left: 0vw;
+  height: 0vw;
+}
+.riverdinwei {
+  opacity: 1;
+  width: 0vw;
+  height: 0vw;
+}
+.distance {
+  margin-left: 0vw;
+  height: 0vw;
+  font-weight: 400;
+  font-size: 0vw;
+  color: #ffffff;
+  line-height: 0vw;
+  white-space: nowrap;
+}
+.main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
+  width: 0vw;
+  height: 0vw;
+}
+.title {
+  margin-top: 0vw;
+  width: 0vw;
+  height: 0vw;
+  font-weight: 400;
+  font-size: 0vw;
+  color: #333333;
+  line-height: 0vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ft {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-left-radius: 0vw;
+  border-bottom-right-radius: 0vw;
+  background-color: #ffffff;
+  padding-right: 0vw;
+  padding-left: 0vw;
+  width: 0vw;
+  height: 0vw;
+  overflow: hidden;
+}
+.block {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 0vw;
+}
+.xianjin {
+  width: 0vw;
+  height: 0vw;
+}
+.fashionHome {
+  margin-left: 0vw;
+  height: 0vw;
+  font-weight: 300;
+  font-size: 0vw;
+  color: #666666;
+  line-height: 0vw;
+  white-space: nowrap;
+}
+.group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 0vw;
+}
+.favorite {
+  width: 0vw;
+  height: 0vw;
+}
+.num {
+  margin-left: 0vw;
+  height: 0vw;
+  font-weight: 400;
+  font-size: 0vw;
+  color: #999999;
+  line-height: 0vw;
+  white-space: nowrap;
+}

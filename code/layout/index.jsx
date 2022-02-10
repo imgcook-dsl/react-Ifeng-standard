@@ -1,9 +1,9 @@
 'use strict';
-
+// class式;
 import React, { Component } from 'react';
 import { fetch } from 'whatwg-fetch';
 import jsonp from 'fetch-jsonp';
-import styles from './style.js';
+import styles from './style.css';
 const print = function(value) {
   // console.log(value);
 };

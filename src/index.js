@@ -6,22 +6,25 @@ module.exports = function(schema, option) {
   // 美化代码
   const {prettier} = option;
 
-  // imports
+  // imports组件
   const imports = [];
 
-  // js样式
+  // js样式组件
   const style = {};
 
-  // css样式
+  // css样式组件
   const cssStyles = [];
 
-  // Global Public Functions
+  // 全局公共方法组件
   const utils = [];
 
-  // Classes 
+  // Classes组件
   const classes = [];
 
-  // 1vw = width / 100：获取vw尺寸
+  // Hooks组件
+  const hooks = [];
+
+  // vw尺寸:1vw = width / 100
   const _w = option.responsive.width / 100;
 
   // 表达式
@@ -261,8 +264,8 @@ module.exports = function(schema, option) {
     }
     return cssStyle
   }
-  // 渲染xml
-  const generateRender = (schema) => {
+  // class渲染xml
+  const generateRenderClass = (schema) => {
     // 组件类型
     const type = schema.componentName.toLowerCase();
     // 类名
@@ -303,7 +306,7 @@ module.exports = function(schema, option) {
       case 'page':
       case 'block':
         if (schema.children && schema.children.length) {
-          xml = `<div${classString}${props}>${transform(schema.children)}</div>`;
+          xml = `<div${classString}${props}>${transformClass(schema.children)}</div>`;
         } else {
           xml = `<div${classString}${props} />`;
         }
@@ -324,15 +327,14 @@ module.exports = function(schema, option) {
 
     return xml;
   }
-
-  // 转换schema
-  const transform = (schema) => {
+  // schema转换class代码
+  const transformClass = (schema) => {
     let result = '';
 
     // 转换字符串
     if (Array.isArray(schema)) {
       schema.forEach((layer) => {
-        result += transform(layer);
+        result += transformClass(layer);
       });
     } else {
       const type = schema.componentName.toLowerCase();
@@ -347,18 +349,18 @@ module.exports = function(schema, option) {
         // 创建class式脚手架
         let classData = [`class ${schema.componentName}_${classes.length} extends Component {`];
 
-        // 创建state对象
+        // states组件:创建state对象
         if (schema.state) {
           states.push(`state = ${toString(schema.state)}`);
         }
-        // 创建方法
+        // methods组件:创建方法
         if (schema.methods) {
           Object.keys(schema.methods).forEach((name) => {
             const { params, content } = parseFunction(schema.methods[name]);
             methods.push(`${name}(${params}) {${content}}`);
           });
         }
-        // 创建数据源声明
+        // init组件：创建数据源声明
         if (schema.dataSource && Array.isArray(schema.dataSource.list)) {
           schema.dataSource.list.forEach((item) => {
             if (typeof item.isInit === 'boolean' && item.isInit) {
@@ -375,7 +377,7 @@ module.exports = function(schema, option) {
             init.push(`this.dataHandler()`);
           }
         }
-        // 创建constructor
+        // lifeCycles组件:创建constructor
         if (schema.lifeCycles) {
           if (!schema.lifeCycles['_constructor']) {
             lifeCycles.push(`constructor(props, context) { super(); ${init.join('\n')}}`);
@@ -391,7 +393,7 @@ module.exports = function(schema, option) {
           });
         }
 
-        render.push(generateRender(schema))
+        render.push(generateRenderClass(schema))
         render.push(`);}`);
 
         // 组件合并
@@ -400,12 +402,117 @@ module.exports = function(schema, option) {
         classes.push(classData.join('\n'));
       } else {
         // 递归
-        result += generateRender(schema);
+        result += generateRenderClass(schema);
       }
     }
 
     return result;
   };
+
+  // Hook渲染xml
+  const generateRenderHook = (schema) => {
+    // 组件类型
+    const type = schema.componentName.toLowerCase();
+    // 类名
+    const className = schema.props && schema.props.className;
+    // 样式名
+    const classString = className ? ` style={styles.${className}}` : '';
+
+    // 生成样式
+    if (className) {
+      //parseStyle 样式
+      style[className] = parseStyle(schema.props.style);
+      //parseCss 样式
+      cssStyles.push(`.${className}{${parseCss(schema.props.style, {type: 'css'})}}`);
+    }
+
+    let xml;
+    let props = '';
+
+    // 生成对应的值（待）
+    Object.keys(schema.props).forEach((key) => {
+      if (['className', 'style', 'text', 'src'].indexOf(key) === -1) {
+        props += ` ${key}={${parseProps(schema.props[key])}}`;
+      }
+
+    })
+
+    // 创建标签内容
+    switch(type) {
+      case 'text': // 文本
+        const innerText = parseProps(schema.props.text, true);
+        xml = `<span${classString}${props}>${innerText}</span>`;
+        break;
+      case 'image': // 图片
+        const source = parseProps(schema.props.src);
+        xml = `<img${classString}${props} src={${source}} />`;
+        break;
+      case 'div': 
+      case 'page':
+      case 'block':
+        if (schema.children && schema.children.length) {
+          xml = `<div${classString}${props}>${transformHook(schema.children)}</div>`;
+        } else {
+          xml = `<div${classString}${props} />`;
+        }
+        break;
+    }
+    // 循环
+    if (schema.loop) {
+      xml = parseLoop(schema.loop, schema.loopArgs, xml)
+    }
+    // 条件
+    if (schema.condition) {
+      xml = parseCondition(schema.condition, xml);
+    }
+    // 条件循环
+    if (schema.loop || schema.condition) {
+      xml = `{${xml}}`;
+    }
+
+    return xml;
+  }
+  // schema转换Hooks代码
+  const transformHook = (schema) => {
+    let result = '';
+
+    // 转换字符串
+    if (Array.isArray(schema)) {
+      // 递归转字符串
+      schema.forEach((layer) => {
+        result += transformHook(layer);
+      });
+    } else {
+      // 判断组件类型
+      const type = schema.componentName.toLowerCase();
+      // page/block都不是
+      if (['page', 'block'].indexOf(type) !== -1) {
+        // 容器组件处理: state/method/dataSource/lifeCycle/render
+        const states = [];
+        const lifeCycles = [];
+        const methods = [];
+        const init = [];
+        
+        // 创建hook式脚手架
+        const render = [`return (`];
+        let classData = [`const ${schema.componentName}_${hooks.length} = () => { \n const [state, setState] = useState([])`];
+
+        render.push(generateRenderHook(schema))
+        render.push(`)`);
+
+        // 组件合并
+        classData = classData.concat(states).concat(lifeCycles).concat(methods).concat(render);
+        classData.push('}');
+        hooks.push(classData.join('\n'));
+      } else {
+        // 递归
+        result += generateRenderHook(schema);
+      }
+    }
+    // 返回值为字符串
+    return result;
+  };
+
   // 创建导入外部的方法
   if (option.utils) {
     Object.keys(option.utils).forEach((name) => {
@@ -413,8 +520,18 @@ module.exports = function(schema, option) {
     });
   }
 
-  // 转换schema
-  transform(schema);
+  // schema转换class代码
+  transformClass(schema);
+
+  // schema转换class代码
+  transformHook(schema);
+
+  // html代码格式
+  const htmlPrettierOpt = {
+    parser: 'html',
+    printWidth: 120,
+    singleQuote: true
+  };
 
   // babel代码格式
   const prettierOpt = {
@@ -429,21 +546,76 @@ module.exports = function(schema, option) {
     printWidth: 120,
   };
 
+  // html代码格式
+  const jsonPrettierOpt = {
+    parser: 'json',
+    printWidth: 120,
+    singleQuote: true
+  };
   // 返回值
   return {
     // 生成文件
     panelDisplay: [
-      // 逻辑
+      // index.html
+      {
+        panelName: `index.html`,
+        panelValue: prettier.format(`
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="theme-color" content="#000000">
+          </head>
+          <body>
+            <div id="container" style="padding: 24px" />
+            <script>var mountNode = document.getElementById('container');</script>
+          </body>
+        </html>
+        `, htmlPrettierOpt),
+        panelType: 'html',
+      },
+      // app.jsx
+      {
+        panelName: `app.jsx`,
+        panelValue: prettier.format(`
+        'use strict';
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        
+        import './index.css';
+        import App from './components/Block1';
+        
+        ReactDOM.render(<App />, document.getElementById('container'));
+        `, prettierOpt),
+        panelType: 'js',
+      },
+      // class逻辑(index.jsx)
       {
         panelName: `index.jsx`,
         panelValue: prettier.format(`
           'use strict';
-
+          // class式;
           import React, { Component } from 'react';
           ${imports.join('\n')}
-          import styles from './style.js';
+          import styles from './style.css';
           ${utils.join('\n')}
           ${classes.join('\n')}
+          export default ${schema.componentName}_0;
+        `, prettierOpt),
+        panelType: 'js',
+      },
+      // Hooks逻辑(index.jsx)
+      {
+        panelName: `index2.jsx`,
+        panelValue: prettier.format(`
+          'use strict';
+          // Hooks式;
+          import React, { useState, useEffect } from 'react';
+          ${imports.join('\n')}
+          import styles from './style.css';
+          ${utils.join('\n')}
+          ${hooks.join('\n')}
           export default ${schema.componentName}_0;
         `, prettierOpt),
         panelType: 'js',
@@ -459,6 +631,33 @@ module.exports = function(schema, option) {
         panelName: `style.js`,
         panelValue: prettier.format(`export default ${toString(style)}`, prettierOpt),
         panelType: 'js'
+      },
+      // json
+      {
+        panelName: `package.json`,
+        panelValue: prettier.format(`
+        {
+          "title": "imgcook demo",
+          "scripts": {
+            "test": "react-scripts test --env=jsdom",
+            "start": "react-scripts start",
+            "eject": "react-scripts eject",
+            "build": "react-scripts build"
+          },
+          "main": "index.js",
+          "devDependencies": {
+            "typescript": "^4.0.5"
+          },
+          "dependencies": {
+            "react-scripts": "^4.0.0",
+            "react-dom": "^16.14.0",
+            "react": "^16.14.0"
+          },
+          "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+        }
+        
+        `, jsonPrettierOpt),
+        panelType: 'json'
       }
     ],
     noTemplate: true

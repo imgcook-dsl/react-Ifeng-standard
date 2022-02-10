@@ -24,6 +24,22 @@ const vm = new NodeVM({
   sandbox: {}
 });
 
+
+// 方法：创建文件夹
+function mkDirsSync(dirname) {
+    // 检测文件是否存在
+  if (fs.existsSync(dirname)) {
+    return true;
+  } else {
+          // 检测路径是否存在
+    if (mkDirsSync(path.dirname(dirname))) {
+      fs.mkdirSync(dirname);
+      return true;
+    }
+  }
+}
+
+
 co(function*() {
   const xtplRender = thunkify(xtpl.render);
   // 读取文件
@@ -50,11 +66,17 @@ co(function*() {
     }
   });
 
+  // 创建文件夹layout
+  const baseDir = '../code/layout';
+  mkDirsSync(path.join(__dirname, baseDir));
+
   //不使用模版
   if (renderInfo.noTemplate) {
     renderInfo.panelDisplay.forEach((file) => {
-      // 创建文件并写入代码
-      fs.writeFileSync(path.join(__dirname, `../code/${file.panelName}`), file.panelValue);
+      console.log('file.panelName',file.panelName);
+      
+      // 在layout中创建文件并写入代码
+      fs.writeFileSync(path.join(__dirname, `../code/layout/${file.panelName}`), file.panelValue);
     });
   } else { 
     const renderData = renderInfo.renderData;
