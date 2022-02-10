@@ -598,7 +598,7 @@ module.exports = function(schema, option) {
           // class式;
           import React, { Component } from 'react';
           ${imports.join('\n')}
-          import styles from './style.css';
+          import styles from './index.css';
           ${utils.join('\n')}
           ${classes.join('\n')}
           export default ${schema.componentName}_0;
@@ -613,7 +613,7 @@ module.exports = function(schema, option) {
           // Hooks式;
           import React, { useState, useEffect } from 'react';
           ${imports.join('\n')}
-          import styles from './style.css';
+          import styles from './index.css';
           ${utils.join('\n')}
           ${hooks.join('\n')}
           export default ${schema.componentName}_0;
@@ -622,7 +622,7 @@ module.exports = function(schema, option) {
       },
       // css样式
       {
-        panelName: `style.css`,
+        panelName: `index.css`,
         panelValue: prettier.format(`${cssStyles.join('\n')}`, cssPrettierOpt),
         panelType: 'css'
       },

@@ -39,6 +39,16 @@ function mkDirsSync(dirname) {
   }
 }
 
+//验证上传文件的文件名是否合法
+function validateFileName(fileName ){
+	//var fileName = 'a.html';
+	var reg = new RegExp('/app.jsx/');
+	if (reg.test(fileName)) {
+
+	    return false;
+	}
+	return true;
+}
 
 co(function*() {
   const xtplRender = thunkify(xtpl.render);
@@ -67,16 +77,39 @@ co(function*() {
   });
 
   // 创建文件夹layout
-  const baseDir = '../code/layout';
-  mkDirsSync(path.join(__dirname, baseDir));
+  const layoutDir = '../code/layout';
+  mkDirsSync(path.join(__dirname, layoutDir));
+
+  // 创建文件夹component
+  const componentDir = '../code/layout/component';
+  mkDirsSync(path.join(__dirname, componentDir));
 
   //不使用模版
   if (renderInfo.noTemplate) {
     renderInfo.panelDisplay.forEach((file) => {
-      console.log('file.panelName',file.panelName);
+
+      const fileName = file.panelName
+
+      switch (fileName) {
+        case 'index.html':
+        // 在layout中创建文件并写入代码
+        fs.writeFileSync(path.join(__dirname, `../code/${file.panelName}`), file.panelValue);
+        break;
+        case 'app.jsx':
+        // 在layout中创建文件并写入代码
+        fs.writeFileSync(path.join(__dirname, `../code/${file.panelName}`), file.panelValue);
+        break;
+        case 'package.json':
+        // 在layout中创建文件并写入代码
+        fs.writeFileSync(path.join(__dirname, `../code/${file.panelName}`), file.panelValue);
+        break;
+        default:
+        // 在layout中创建文件并写入代码
+        fs.writeFileSync(path.join(__dirname, `../code/layout/${file.panelName}`), file.panelValue);
+        break;
+      }
       
-      // 在layout中创建文件并写入代码
-      fs.writeFileSync(path.join(__dirname, `../code/layout/${file.panelName}`), file.panelValue);
+
     });
   } else { 
     const renderData = renderInfo.renderData;
