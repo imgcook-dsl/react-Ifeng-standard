@@ -1,4 +1,4 @@
-简体中文 | [English](https://github.com/imgcook-dsl/react-Ifeng-standard/blob/master/README.md)
+简体中文 | [English](https://github.com/imgcook-dsl/react-standard/blob/master/README.md)
 
 ## 概述
 
@@ -6,7 +6,13 @@
 <br/>
 
 ## 如何使用
+```
+npm run build 
+```
 
+```
+npm run demo
+```
 ### 选择 DSL 代码生成
 
 DSL 使用方式是在[编辑器](https://www.imgcook.com/editor#/)中点击「生成代码」按钮选择的 DSL 列表默认加载 DSL 官方提供的和自己定义的如图。

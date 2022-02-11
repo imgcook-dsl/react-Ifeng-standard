@@ -180,7 +180,6 @@ export const simpleStyle = (schema) => {
   }
 
   function getMaxSameStyles(array) {
-    console.log('array', array)
     if (array.length < 2) {
       return {}
     }

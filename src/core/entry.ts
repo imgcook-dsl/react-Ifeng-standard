@@ -1,38 +1,88 @@
-// 出码设置
+// DSL接口
+import { IPanelDisplay, IDslConfig } from './interface'; // IPanelDisplay展示面板 IDslConfig配置文件
+
 import {
-  line2Hump,
-  transComponentsMap,
-  initSchema,
-  traverse,
-  genStyleClass,
-  getGlobalClassNames,
-  genStyleCode,
+  line2Hump,//去下划线
+  transComponentsMap,// 组件
+  initSchema,//初始化schema
+  traverse,// 遍历节点
+  genStyleClass,// 样式类名
+  getGlobalClassNames,//  提取全局样式
+  genStyleCode,//  样式代码
 } from './utils';
 
-import { CSS_TYPE, DSL_CONFIG,initConfig } from './consts';
+import { 
+  CSS_TYPE,// css类型
+  COMPONENT_TYPE,//组件类型
+  OUTPUT_TYPE, //输出类型
+  initConfig //初始化配置
+  } from './consts';
 
-import exportStatic from './exportStatic';
-import exportDynamic from './exportDynamic';
-import exportGlobalCss from './exportGlobalCss'
-import exportNormalize from './exportNormalize'
 
-module.exports = function (schema, option) {
+// 导出Block
+import exportBlock from './exportBlock';
+// 导出Page
+// const exportPage from './exportPage';
+// 导出应用文件
+import exportCreateApp from './exportCreateApp';
+// 导出全家样式
+import exportGlobalCss from './exportGlobalCss';
 
-  const dslConfig = Object.assign({}, DSL_CONFIG, option._.get(schema, 'imgcook.dslConfig')); 
+module.exports = function(schema, option) {
+  // get blocks json
+  const blocks: any[] = [];
+  const pages: any[] = []
 
-  console.log('初始化', dslConfig)
+  // 参数设置
+  // 尺寸
+  option.scale = 750 / ((option.responsive && option.responsive.width) || 750);
+  // 组件
+  option.componentsMap = transComponentsMap(option.componentsMap);
+  // 名字
+  option.blockInPage = schema.componentName === 'Page';
+  // 样式
+  option.pageGlobalCss = schema.css || '';
 
-  
-  option.scale = 750 / ((option.responsive && option.responsive.width || dslConfig.responseWidth) || 750);
+  // 配置DSL参数
+  const dslConfig = Object.assign(
+    {
+      scale: option.scale,
+      globalCss: true,
+      cssUnit: 'px',
+      inlineStyle: CSS_TYPE.IMPORT_CLASS,
+      componentStyle: COMPONENT_TYPE.HOOKS,
+      htmlFontSize: 16
+    },
+    option._.get(schema, 'imgcook.dslConfig')
+  );
 
-  dslConfig.scale = option.scale;
-
+  dslConfig.useHooks = dslConfig.componentStyle ===  COMPONENT_TYPE.HOOKS;
+  dslConfig.useTypescript = dslConfig.jsx === 'typescript'
   option.dslConfig = dslConfig;
+
+
+  // 初始化全局参数
   initConfig(dslConfig);
 
-    // clear schema
+  // 可选 className name  style
+  // inlineStyle = inlineStyle !== 'className';
+
+
+  const { inlineStyle } = dslConfig
+  // clear schema
   initSchema(schema);
 
+  // 记录所有blocks
+  traverse(schema, (json) => {
+    switch (json.componentName.toLowerCase()) {
+      case 'block':
+        blocks.push(json);
+        break;
+      case 'page':
+        pages.push(json);
+        break;
+    }
+  });
 
   // 样式名处理：指定命名风格
   traverse(schema, (json) => {
@@ -46,53 +96,95 @@ module.exports = function (schema, option) {
 
   // 提取全局样式，类名数组存于 json.classString , 剩余样式覆盖 style
   traverse(schema, (json) => {
-    let className = json.props && json.props.className;
+    let className = json.props && json.props.className || '';
     let classString = '';
     let style = json.props.style;
-    if(!className){
-      return
-    }
    
     // inline 
-    let classnames: string[] = json.classnames || []
-    let enableGlobalCss = dslConfig.globalCss && schema.css
- 
-    // 计算全局样式类名
-    if (enableGlobalCss) {
-      const cssResults = getGlobalClassNames(style, schema.css);
-      if (cssResults.names.length > 0) {
-        classnames = cssResults.names
+    if(inlineStyle === CSS_TYPE.INLINE_CSS){
+      classString = `className="${className}"`;
+      json.props.codeStyle = style;
+    }else if(inlineStyle === CSS_TYPE.MODULE_STYLE){
+      classString = ` style={${genStyleCode('styles', className)}}`;
+    }else{
+      let classnames: string[] = []
+      let enableGlobalCss = dslConfig.globalCss && schema.css
+   
+      // 计算全局样式类名
+      if (enableGlobalCss) {
+        const cssResults = getGlobalClassNames(style, schema.css);
+        if (cssResults.names.length > 0) {
+          classnames = cssResults.names
+        } 
+        style = cssResults.style;
       } 
-      style = cssResults.style;
-    } 
-    
-    classnames.push(className);
-    classString = ` class="${classnames.join(' ')}"`;
+      
+      if(inlineStyle == CSS_TYPE.MODULE_CLASS){
+        // classnames.push(genStyleCode('styles', className));
+     
+        if(classnames.length){
+          const nameStr =`${classnames.join(' ')} \$\{ ${ genStyleCode('styles', className) }\}`;
+          classString = ` className={\`${nameStr.trim()}\`}`;
+        }else{
+          classString = ` className={${ genStyleCode('styles', className).trim()}}`;
+        }
+
+      }else{
+        classnames.push(className);
+        classString = ` className="${classnames.join(' ')}"`;
+      }
+    }
     
     json.props.style = style;
     json.classString = classString;
   });
 
+  option.blocksCount = blocks.length;
+  option.pagesCount = pages.length;
+
+  // 导出模块代码
+  let panelDisplay: IPanelDisplay[] = [];
+
+  const panelImports = []
 
 
-  let panelDisplay;
+  // 导出blocks代码目录
+  blocks.length > 0 &&
+    blocks.forEach((block) => {
+      const result = exportBlock(block, option);
+      panelDisplay = panelDisplay.concat(result);
+    });
 
-  schema.fileName = 'index';
-  if (dslConfig.renderType == 'javascript') {
-    panelDisplay = exportDynamic(schema, option);
-  } else {
-    panelDisplay = exportStatic(schema, option);
+  // 导出page代码目录
+  if (schema.componentName === 'Page') {
+    const result = exportBlock(schema, option);
+    panelDisplay = panelDisplay.concat(result);
+  }
+
+  // 导出格式（完成项目/仅组件）
+  if(dslConfig.outputStyle == OUTPUT_TYPE.PROJECT){
+    // 依赖 package.json
+    const dependencies = {};
+    for(let item of panelDisplay){
+      if(item.panelImports && item.panelImports.length > 0){
+        for( let pack of item.panelImports){
+          dependencies[pack.package] = pack.version || '*'
+        }
+      }
+    }
+
+    // 项目文件
+    panelDisplay = panelDisplay.concat(exportCreateApp(schema, {...option, dependencies}));
   }
 
 
-      
+    
   // 全局样式
   panelDisplay = panelDisplay.concat(exportGlobalCss(schema, option));
-  panelDisplay = panelDisplay.concat(exportNormalize(schema, option));
-  
+
 
   return {
-    panelDisplay: panelDisplay,
+    panelDisplay,
     noTemplate: true,
   };
 };
