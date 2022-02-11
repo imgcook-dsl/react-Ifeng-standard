@@ -4,7 +4,7 @@ export default {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',
-    height: '0.13vw'
+    height: '0.13vw',
   },
   bd: {
     display: 'flex',
@@ -13,7 +13,7 @@ export default {
     flexDirection: 'row',
     opacity: '1.00',
     width: '0.00vw',
-    height: '0.00vw'
+    height: '0.00vw',
   },
   layer: { position: 'absolute', top: '0.00vw', left: '0.00vw', width: '0.00vw', height: '0.00vw', overflow: 'hidden' },
   bg: { position: 'absolute', top: '0.00vw', left: '0.00vw', opacity: '1.00', width: '0.00vw', height: '0.00vw' },
@@ -29,7 +29,7 @@ export default {
     backgroundColor: 'rgba(0,0,0,0.40)',
     paddingRight: '0.00vw',
     paddingLeft: '0.00vw',
-    height: '0.00vw'
+    height: '0.00vw',
   },
   riverdinwei: { opacity: '1.00', width: '0.00vw', height: '0.00vw' },
   distance: {
@@ -39,7 +39,7 @@ export default {
     fontSize: '0.00vw',
     color: '#ffffff',
     lineHeight: '0.00vw',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
   main: {
     display: 'flex',
@@ -48,7 +48,7 @@ export default {
     justifyContent: 'center',
     backgroundColor: '#ffffff',
     width: '0.00vw',
-    height: '0.00vw'
+    height: '0.00vw',
   },
   title: {
     marginTop: '0.00vw',
@@ -59,7 +59,7 @@ export default {
     color: '#333333',
     lineHeight: '0.00vw',
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    textOverflow: 'ellipsis',
   },
   ft: {
     boxSizing: 'border-box',
@@ -74,7 +74,7 @@ export default {
     paddingLeft: '0.00vw',
     width: '0.00vw',
     height: '0.00vw',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   block: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '0.00vw' },
   xianjin: { width: '0.00vw', height: '0.00vw' },
@@ -85,7 +85,7 @@ export default {
     fontSize: '0.00vw',
     color: '#666666',
     lineHeight: '0.00vw',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
   group: { display: 'flex', alignItems: 'center', flexDirection: 'row', height: '0.00vw' },
   favorite: { width: '0.00vw', height: '0.00vw' },
@@ -96,6 +96,6 @@ export default {
     fontSize: '0.00vw',
     color: '#999999',
     lineHeight: '0.00vw',
-    whiteSpace: 'nowrap'
-  }
+    whiteSpace: 'nowrap',
+  },
 };

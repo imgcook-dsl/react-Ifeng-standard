@@ -1,4 +1,4 @@
-
+// 类型定义
 export interface IPanelDisplay {
   panelName: string;
   panelValue: string;
@@ -14,13 +14,11 @@ export interface IImport {
 }
 
 export interface IDslConfig {
-  responseWidth: number;
+  globalCss?: boolean;
+  cssUnit?: 'px' | 'vw' | 'rpx' | 'rem';
+  renderType?: 'javascript' | 'html';
+  cssStyle?: 'kebabCase' | 'camelCase' | 'snakeCase',
+  responseWidth?: number;
   scale: number;
-  globalCss: boolean;
-  componentStyle: 'components' | 'hooks';
-  cssUnit: 'px' | 'vw' | 'rpx' | 'rem';
-  inlineStyle: 'import' | 'module' | 'inline' | 'module_style';
-  outputStyle: 'project' | 'component';
-  cssStyle: 'kebabCase' | 'camelCase' | 'snakeCase',
-  htmlFontSize: number
+  htmlFontSize?: number
 }

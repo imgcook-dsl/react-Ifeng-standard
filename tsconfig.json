@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "target": "ES2017",//用于编译输出的语言
+      "module": "commonjs",//编译输出中使用的模块管理器。system适用于SystemJS，commonjsCommonJS。
+      "jsx": "preserve",
+      "declaration": true,// 生成声明文件，开启后会自动生成声明文件
+      "outDir": "./dist",// 指定输出目录
+      "strict": true, // 开启所有严格的类型检查
+      "noImplicitAny": false,// 不允许隐式的any类型
+      "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+      "allowSyntheticDefaultImports": true,// 允许在模块中全局变量的方式访问umd模块
+      "esModuleInterop": true,// 允许export=导出，由import from 导入
+      "resolveJsonModule": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "noImplicitThis": true,// 不允许this有隐式的any类型
+      "noUnusedLocals": false,// 检查只声明、未使用的局部变量(只提示不报错)
+      "stripInternal": true,
+      "pretty": true,
+      "lib": [    // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+        "es2017",
+        "dom"
+      ]
+    },
+    "include": [//指定编译器需要文件或文件夹。
+      "./src"
+    ],
+    "exclude": [//指定编译器需要排除的文件或文件夹。
+      "node_modules"
+    ]
+  }

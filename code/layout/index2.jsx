@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { fetch } from 'whatwg-fetch';
 import jsonp from 'fetch-jsonp';
 import styles from './index.css';
-const print = function(value) {
+const print = function (value) {
   // console.log(value);
 };
 const Page_0 = () => {
@@ -15,7 +15,7 @@ const Page_0 = () => {
         return (
           <div
             key={index}
-            onClick={e => {
+            onClick={(e) => {
               window.open(item.url, '_blank');
             }}
             data-url={item.url}

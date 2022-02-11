@@ -57,7 +57,7 @@ co(function*() {
     path.resolve(__dirname, '../src/index.js'),
     'utf8'
   );
-  // 执行脚本=>生成UI渲染信息
+  // 执行脚本=>生成文件信息
   const renderInfo = vm.run(code)(data, {
     // 美化代码
     prettier: prettier,

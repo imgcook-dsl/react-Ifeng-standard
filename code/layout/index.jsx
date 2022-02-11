@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { fetch } from 'whatwg-fetch';
 import jsonp from 'fetch-jsonp';
 import styles from './index.css';
-const print = function(value) {
+const print = function (value) {
   // console.log(value);
 };
 class Page_0 extends Component {
@@ -15,7 +15,7 @@ class Page_0 extends Component {
         coverImage: 'https://img.alicdn.com/tfs/TB1Txq6o7T2gK0jSZFkXXcIQFXa-684-684.png',
         readCount: 200,
         user: { userImage: 'https://img.alicdn.com/tfs/TB1DWe6oYj1gK0jSZFOXXc7GpXa-60-60.png', userName: '时尚家居' },
-        url: 'https://www.imgcook.com'
+        url: 'https://www.imgcook.com',
       },
       {
         title: '拥有超多功能的40平米简约小公寓了解一下',
@@ -23,11 +23,11 @@ class Page_0 extends Component {
         readCount: 500,
         user: {
           userImage: 'https://img.alicdn.com/tfs/TB1DWe6oYj1gK0jSZFOXXc7GpXa-60-60.png',
-          userName: '花花设计工作'
+          userName: '花花设计工作',
         },
-        url: 'https://www.imgcook.com/docs'
-      }
-    ]
+        url: 'https://www.imgcook.com/docs',
+      },
+    ],
   };
   constructor(props, context) {
     super();
@@ -41,23 +41,23 @@ class Page_0 extends Component {
   }
   fetch_example() {
     fetch('https://jsonplaceholder.typicode.com/todos/1', { method: 'GET', headers: '{"Content-Type":"json"}' })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((data, error) => {
         console.log('fetch example: ', data, error);
         return data;
       })
-      .catch(e => {
+      .catch((e) => {
         console.log('error', e);
       });
   }
   jsonp_example() {
     jsonp('https://assets.airbnb.com/frontend/search_results.js', { jsonpCallbackFunction: 'search_results', body: {} })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((data, error) => {
         console.log('jsonp example: ', data, error);
         return data;
       })
-      .catch(e => {
+      .catch((e) => {
         console.log('error', e);
       });
   }
@@ -68,7 +68,7 @@ class Page_0 extends Component {
           return (
             <div
               key={index}
-              onClick={e => {
+              onClick={(e) => {
                 window.open(item.url, '_blank');
               }}
               data-url={item.url}
