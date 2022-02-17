@@ -1,3 +1,4 @@
+// ts 转义 js
 const path = require('path');
 
 module.exports = {

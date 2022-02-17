@@ -20,7 +20,7 @@ import {
 
 import { CSS_TYPE, OUTPUT_TYPE, prettierJsOpt, prettierCssOpt, prettierLessOpt, prettierScssOpt } from './consts';
 
-
+// render代码（设计稿shema / 配置项option）
 export default function exportMod(schema, option):IPanelDisplay[] {
   const {
     prettier,
@@ -35,6 +35,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     _,
   } = option;
 
+  // 导出全局样式文件
   const isExportGlobalFile = dslConfig.globalCss && blocksCount == 1 && !blockInPage;
   const fileName = schema.fileName;
   const { cssUnit } = dslConfig;
@@ -336,9 +337,10 @@ export default function exportMod(schema, option):IPanelDisplay[] {
 
      const hooksView = generateRender(json, false);
      const hasDispatch = hooksView.match('dispatch');
-
+     const componentName = folderName.split('/')[1] || 'Layout'
      const classData = `
-     export default memo((props) => {
+     const ${componentName} =
+     (props) => {
        ${useState.join('\n')}
        ${
          hasDispatch
@@ -353,7 +355,8 @@ export default function exportMod(schema, option):IPanelDisplay[] {
            ? `return (<View>${hooksView}</View>)`
            : `return (${hooksView})`
        }
-       });
+       };
+       export default ${componentName}
        `;
        classes.push(classData);
        
@@ -478,8 +481,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     // const hooksView = generateRender(schema);
     // const hasDispatch = hooksView.match('dispatch');
     indexValue = `
-      'use strict';
-      import React, { useState, useEffect, memo } from 'react';
+      import React, { useState, useEffect } from 'react';
       ${imports.map((i) => i._import).join('\n')}
       ${importMods.map((i) => i._import).join('\n')}
   
@@ -563,7 +565,9 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       folder: folderName,
     });
   }
-
+  
+  
+  // 输出代码
   return panelDisplay;
 }
 

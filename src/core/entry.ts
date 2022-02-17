@@ -1,6 +1,7 @@
-// DSL接口
+// DSL接口类型
 import { IPanelDisplay, IDslConfig } from './interface'; // IPanelDisplay展示面板 IDslConfig配置文件
 
+// 公共方法
 import {
   line2Hump,//去下划线
   transComponentsMap,// 组件
@@ -11,6 +12,7 @@ import {
   genStyleCode,//  样式代码
 } from './utils';
 
+// 常量名
 import { 
   CSS_TYPE,// css类型
   COMPONENT_TYPE,//组件类型
@@ -28,22 +30,23 @@ import exportCreateApp from './exportCreateApp';
 // 导出全家样式
 import exportGlobalCss from './exportGlobalCss';
 
+// render代码（接受设计稿shema / 配置项option）
 module.exports = function(schema, option) {
   // get blocks json
   const blocks: any[] = [];
   const pages: any[] = []
 
   // 参数设置
-  // 尺寸
+  // 尺寸比例
   option.scale = 750 / ((option.responsive && option.responsive.width) || 750);
-  // 组件
+  // 组件信息
   option.componentsMap = transComponentsMap(option.componentsMap);
-  // 名字
+  // 组件名
   option.blockInPage = schema.componentName === 'Page';
-  // 样式
+  // 全局样式
   option.pageGlobalCss = schema.css || '';
 
-  // 配置DSL参数
+  // 初始化配置项
   const dslConfig = Object.assign(
     {
       scale: option.scale,
@@ -59,7 +62,6 @@ module.exports = function(schema, option) {
   dslConfig.useHooks = dslConfig.componentStyle ===  COMPONENT_TYPE.HOOKS;
   dslConfig.useTypescript = dslConfig.jsx === 'typescript'
   option.dslConfig = dslConfig;
-
 
   // 初始化全局参数
   initConfig(dslConfig);
@@ -147,11 +149,13 @@ module.exports = function(schema, option) {
 
   const panelImports = []
 
-
+  
   // 导出blocks代码目录
   blocks.length > 0 &&
     blocks.forEach((block) => {
+      // 渲染代码
       const result = exportBlock(block, option);
+      // 合并
       panelDisplay = panelDisplay.concat(result);
     });
 
@@ -177,8 +181,6 @@ module.exports = function(schema, option) {
     panelDisplay = panelDisplay.concat(exportCreateApp(schema, {...option, dependencies}));
   }
 
-
-    
   // 全局样式
   panelDisplay = panelDisplay.concat(exportGlobalCss(schema, option));
 

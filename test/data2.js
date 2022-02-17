@@ -25,7 +25,7 @@ module.exports = {
   "reference": "sketch",
   "restore_id": "f1240385-fe4e-4b5d-9107-cc2f31a95dd2",
   "children": [{
-    "componentName": "Block",
+    "componentName": "Div",
     "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
     "props": {
       "style": {
@@ -92,7 +92,7 @@ module.exports = {
     "restore_id": "f1240385-fe4e-4b5d-9107-cc2f31a95dd2",
     "dslConfig": {
       "cssUnit": "rem",
-      "dsl": "react-standard",
+      "dsl": "react-ifeng-standard",
       "componentStyle": "hooks",
       "cssStyle": "camelCase",
       "cssType": "css",
@@ -100,7 +100,7 @@ module.exports = {
       "globalCss": false,
       "jsx": "javascript",
       "outputStyle": "component",
-      "dslName": "React",
+      "dslName": "React-Ifeng",
       "renderType": "html",
       "defaultCss": true,
       "htmlFontSize": "16",

@@ -1,8 +1,8 @@
-'use strict';
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import styles from './index.module.css';
+import styles from './index.css';
 
-export default memo((props) => {
-  return <div className={styles.footer} />;
-});
+const Footer = (props) => {
+  return <div style={styles.footer} />;
+};
+export default Footer;

@@ -1,18 +1,17 @@
-'use strict';
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 
-import styles from './index.module.css';
+import styles from './index.css';
 
-export default memo((props) => {
+const Layout = (props) => {
   return (
-    <div className={styles.mod}>
-      <Header />
+    <div style={styles.mod}>
+      <div style={styles.header} />
       <Body />
       <Footer />
     </div>
   );
-});
+};
+export default Layout;

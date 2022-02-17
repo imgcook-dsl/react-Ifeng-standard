@@ -1,8 +1,8 @@
-'use strict';
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import styles from './index.module.css';
+import styles from './index.css';
 
-export default memo((props) => {
-  return <div className={styles.body} />;
-});
+const Body = (props) => {
+  return <div style={styles.body} />;
+};
+export default Body;

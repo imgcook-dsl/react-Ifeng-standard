@@ -1,3 +1,4 @@
+// 组件
 module.exports = {
   "list": [
       {
