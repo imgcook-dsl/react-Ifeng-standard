@@ -1,6 +1,12 @@
 .footer {
   position: relative;
   width: 230px;
-  height: 67px;
+  height: 200px;
   background-color: #fffc00;
+}
+.header {
+  position: relative;
+  width: 230px;
+  height: 67px;
+  background-color: #ff0000;
 }

@@ -3,6 +3,21 @@ import React, { useState, useEffect } from 'react';
 import styles from './index.css';
 
 const Body = (props) => {
-  return <div style={styles.body} />;
+  const [state, setState] = useState([
+    { age: '18', name: 'xjn' },
+    { age: '28', name: 'zhj' },
+  ]);
+
+  return (
+    <div style={styles.body}>
+      {state.map((item, index) => {
+        return (
+          <div key={index} style={styles.header}>
+            <span style={styles.header}>{item.age}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 export default Body;

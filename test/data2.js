@@ -44,7 +44,32 @@ module.exports = {
     },
     "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
     "nodeLayerName": "header",
-    "fileName": "header"
+    "fileName": "header",
+    "children": [{
+      "componentName": "Text",
+      "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+      "props": {
+        "style": {
+          "position": "static"
+        },
+        "className": "header",
+        "text": "{{this.item.name}}"
+      },
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 230,
+        "height": 67
+      },
+      "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+      "nodeLayerName": "header",
+      "fileName": "header",
+      "loop": [{
+        "name": "xjn"
+      }, {
+        "name": "xjn"
+      }]
+    }]
   }, {
     "componentName": "Block",
     "id": "1b349b00-8989-11ec-91d7-41dbf8602e86",
@@ -65,16 +90,66 @@ module.exports = {
     },
     "selfId": "A9C27E23-8C1D-4E7B-91CB-5D8B06DA77C1",
     "nodeLayerName": "body",
-    "fileName": "body"
+    "fileName": "body",
+    "state": [{
+      "age": "18",
+      "name": "xjn"
+    }, {
+      "age": "28",
+      "name": "zhj"
+    }],
+    "children": [{
+      "componentName": "Div",
+      "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+      "props": {
+        "style": {
+          "position": "relative",
+          "backgroundColor": "#FF0000",
+          "width": "230px",
+          "height": "67px"
+        },
+        "className": "header"
+      },
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 230,
+        "height": 67
+      },
+      "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+      "nodeLayerName": "header",
+      "fileName": "header",
+      "children": [{
+        "componentName": "Text",
+        "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+        "props": {
+          "style": {
+            "position": "static"
+          },
+          "className": "header",
+          "text": "{{this.item.age}}"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 230,
+          "height": 67
+        },
+        "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+        "nodeLayerName": "header",
+        "fileName": "header"
+      }],
+      "loop": "{{state}}"
+    }]
   }, {
     "componentName": "Block",
     "id": "1b349b01-8989-11ec-91d7-41dbf8602e86",
     "props": {
       "style": {
-        "position": "relative",
-        "backgroundColor": "#FFFC00",
         "width": "230px",
-        "height": "67px"
+        "height": "200px",
+        "position": "relative",
+        "backgroundColor": "#FFFC00"
       },
       "className": "footer"
     },
@@ -86,13 +161,51 @@ module.exports = {
     },
     "selfId": "DF2E6061-0FB5-498E-AA60-933902F72F7B",
     "nodeLayerName": "footer",
-    "fileName": "footer"
+    "fileName": "footer",
+    "children": [{
+      "componentName": "Div",
+      "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+      "props": {
+        "style": {
+          "position": "relative",
+          "backgroundColor": "#FF0000",
+          "width": "230px",
+          "height": "67px"
+        },
+        "className": "header",
+        "onClick": function onClick(e) {
+          console.log(222)
+          this.xxx()
+        },
+        "onAnimationStart": function onAnimationStart(e) {
+          console.log(e)
+        }
+      },
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 230,
+        "height": 67
+      },
+      "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+      "nodeLayerName": "header",
+      "fileName": "header",
+      "children": []
+    }],
+    "state": {
+      "name": "xjn"
+    },
+    "methods": {
+      "xxx": function xxx() {
+        console.log(123231)
+      }
+    }
   }],
   "imgcook": {
     "restore_id": "f1240385-fe4e-4b5d-9107-cc2f31a95dd2",
     "dslConfig": {
       "cssUnit": "rem",
-      "dsl": "react-ifeng-standard",
+      "dsl": "react-standard",
       "componentStyle": "hooks",
       "cssStyle": "camelCase",
       "cssType": "css",
@@ -100,7 +213,7 @@ module.exports = {
       "globalCss": false,
       "jsx": "javascript",
       "outputStyle": "component",
-      "dslName": "React-Ifeng",
+      "dslName": "React",
       "renderType": "html",
       "defaultCss": true,
       "htmlFontSize": "16",

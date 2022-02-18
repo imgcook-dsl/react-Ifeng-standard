@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from 'react';
+'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Body from './components/Body';
-import Footer from './components/Footer';
+import './index.css';
+import App from './';
 
-import styles from './index.css';
-
-const Layout = (props) => {
-  return (
-    <div style={styles.mod}>
-      <div style={styles.header} />
-      <Body />
-      <Footer />
-    </div>
-  );
-};
-export default Layout;
+ReactDOM.render(<App />, document.getElementById('container'));

@@ -604,8 +604,13 @@ export const generateScss = (schema) => {
 };
 
 
-// parse loop render
-export const parseLoop = (loop, loopArg, render, params = {}) => {
+// parse loop render 循环数据设置
+export const parseLoop = (
+      loop,
+      loopArg,// 循环变量名（item和index）
+      render,
+      params = {}
+     ) => {
   let data;
   let loopArgItem = (loopArg && loopArg[0]) || 'item';
   let loopArgIndex = (loopArg && loopArg[1]) || 'index';
@@ -622,7 +627,7 @@ export const parseLoop = (loop, loopArg, render, params = {}) => {
     tagEnd
   )}`;
 
-  // remove `this`
+  // remove `this`删除this
   const re = new RegExp(`this.${loopArgItem}`, 'g');
   render = render.replace(re, loopArgItem);
   let stateValue = data;
@@ -630,6 +635,7 @@ export const parseLoop = (loop, loopArg, render, params = {}) => {
     stateValue = `state.${data.split('.').pop()}`;
   }
 
+  // 生成item项结构
   const formatRender = params['formatRender'] || function (str) { return str };
   return {
     hookState: [],

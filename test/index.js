@@ -104,7 +104,8 @@ co(function* () {
     responseHeight: 1334, // 高度
     responseWidth: 750,// 宽度
     useHooks: true,// 使用useHooks
-    useTypescript: false // 使用TS
+    useTypescript: false, // 使用TS
+    outputStyle:'project', //导出格式： 'component'| 'project'
   });
 
   // 生成代码路径

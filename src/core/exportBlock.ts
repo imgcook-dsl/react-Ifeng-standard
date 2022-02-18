@@ -300,7 +300,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
      if (json.methods) {
        Object.keys(json.methods).forEach((name) => {
          const { params, content } = parseFunction(json.methods[name]);
-         methods.push(`function ${name}(${params}) {${content}}`);
+         methods.push(`const ${name} = (${params}) => {${content}}`);
        });
      }
 
