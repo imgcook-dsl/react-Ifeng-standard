@@ -1,8 +1,25 @@
-'use strict';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
 
-import './index.css';
-import App from './';
+import Body from './components/Body';
+import Footer from './components/Footer';
 
-ReactDOM.render(<App />, document.getElementById('container'));
+import styles from './index.css';
+
+const Layout = (props) => {
+  return (
+    <div style={styles.mod}>
+      <div style={styles.header}>
+        {[{ name: 'xjn' }, { name: 'xjn' }].map((item, index) => {
+          return (
+            <span key={index} style={styles.header}>
+              {item.name}
+            </span>
+          );
+        })}
+      </div>
+      <Body />
+      <Footer />
+    </div>
+  );
+};
+export default Layout;
