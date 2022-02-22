@@ -26,7 +26,8 @@
   "scripts": {
     "debug": "npx webpack --config webpack.config.js --mode=development",
     "build": "npx webpack --config webpack.config.js --mode=production",
-    "demo": "node ./test/index.js",
+    "demo": " node ./test/index.js",
+    "buildDemo": "rm -rf dist && rm -rf src/index.js && npx webpack --config webpack.config.js --mode=production && node ./test/index.js",
     "test": "mocha  --colors test/**/*.test.js",
     "start": "node ./test/index.js",
     "test-with-coverage": "nyc --reporter=html mocha --exit  --colors test/**/*.test.js "

@@ -25,7 +25,53 @@ module.exports = {
   "reference": "sketch",
   "restore_id": "f1240385-fe4e-4b5d-9107-cc2f31a95dd2",
   "children": [{
-    "componentName": "Div",
+    "componentName": "Carousel",
+    "props": {},
+    "children": [{
+      "componentName": "Div",
+      "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+      "props": {
+        "style": {
+          "position": "relative",
+          "backgroundColor": "#FF0000",
+          "width": "230px",
+          "height": "67px"
+        },
+        "className": "header"
+      },
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 230,
+        "height": 67
+      },
+      "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+      "nodeLayerName": "header",
+      "fileName": "header",
+      "children": [{
+        "componentName": "Text",
+        "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
+        "props": {
+          "style": {
+            "position": "static"
+          },
+          "className": "header",
+          "text": "{{this.item.name}}"
+        },
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 230,
+          "height": 67
+        },
+        "selfId": "5B40E9CC-CB1E-492F-BE00-8153E2B673AC",
+        "nodeLayerName": "header",
+        "fileName": "header",
+        "loop": [1, 2]
+      }]
+    }]
+  }, {
+    "componentName": "Block",
     "id": "1b3473f1-8989-11ec-91d7-41dbf8602e86",
     "props": {
       "style": {
@@ -34,7 +80,11 @@ module.exports = {
         "width": "230px",
         "height": "67px"
       },
-      "className": "header"
+      "className": "fuck",
+      "onClick": function onClick(e) {
+        alert("hello wordl3")
+      },
+      "hmComponent": "van-button"
     },
     "rect": {
       "x": 0,
@@ -65,9 +115,9 @@ module.exports = {
       "nodeLayerName": "header",
       "fileName": "header",
       "loop": [{
-        "name": "xjn"
+        "name": "Canan"
       }, {
-        "name": "xjn"
+        "age": "18"
       }]
     }]
   }, {
@@ -93,10 +143,10 @@ module.exports = {
     "fileName": "body",
     "state": [{
       "age": "18",
-      "name": "xjn"
+      "name": "Canan"
     }, {
       "age": "28",
-      "name": "zhj"
+      "name": "Dany"
     }],
     "children": [{
       "componentName": "Div",
@@ -140,7 +190,12 @@ module.exports = {
         "fileName": "header"
       }],
       "loop": "{{state}}"
-    }]
+    }],
+    "methods": {
+      "handleClick": function handleClick() {
+        alert("hello world")
+      }
+    }
   }, {
     "componentName": "Block",
     "id": "1b349b01-8989-11ec-91d7-41dbf8602e86",
@@ -205,7 +260,7 @@ module.exports = {
     "restore_id": "f1240385-fe4e-4b5d-9107-cc2f31a95dd2",
     "dslConfig": {
       "cssUnit": "rem",
-      "dsl": "react-standard",
+      "dsl": "react-ifeng-standard",
       "componentStyle": "hooks",
       "cssStyle": "camelCase",
       "cssType": "css",
@@ -213,12 +268,35 @@ module.exports = {
       "globalCss": false,
       "jsx": "javascript",
       "outputStyle": "component",
-      "dslName": "React",
+      "dslName": "React-Ifeng",
       "renderType": "html",
       "defaultCss": true,
       "htmlFontSize": "16",
       "accessible": true,
       "responseWidth": 750
     }
+  },
+  "dataSource": {
+    "list": [{
+      "id": "getInfo",
+      "isInit": false,
+      "type": "fetch",
+      "options": {
+        "method": "GET",
+        "params": {},
+        "uri": "https://api.ifengcloud.ifeng.com/mock/1735/Active_Shareofficer_User/getIndexData"
+      },
+      "dataHandler": function dataHandler(data, error) {
+        console.log('请求数据为', data)
+        return data;
+      }
+    }]
+  },
+  "state": {
+    "height": "160px",
+    "color": "#fff",
+    "lineHeight": "160px",
+    "textAlign": "center",
+    "background": "#364d79"
   }
   }

@@ -104,7 +104,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       importStyles.push(`import styles from './${cssFileName}';`);
     }
   }
-
+  // 处理导入（第三方）
   const collectImports = (componentName) => {
     let componentMap = componentsMap[componentName] || {};
     let packageName =
@@ -143,7 +143,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       })).join('')
     }
     const componentName = json.componentName;
-    const type = json.componentName.toLowerCase();
+    const type = json.componentName.toLowerCase();  
     let className = json.props && json.props.className;
     let classString = json.classString || '';
 
@@ -233,6 +233,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         }
         break;
       default:
+        // 第三方组件UI
         if(componentName){
           collectImports(componentName);
           if (

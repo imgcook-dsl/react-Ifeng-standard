@@ -92,7 +92,7 @@ export const isEmptyObj = (o) => {
 
 interface IComp { list?: { name: string; packageName: string; dependenceVersion: string; dependence: string }[] };
 
-// 转换组件
+// 转换组件：package.json
 export const transComponentsMap = (compsMap: IComp = {}) => {
   if (!compsMap || !Array.isArray(compsMap.list)) {
     return [];

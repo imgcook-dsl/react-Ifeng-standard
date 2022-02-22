@@ -4,9 +4,13 @@ import styles from './index.css';
 
 const Body = (props) => {
   const [state, setState] = useState([
-    { age: '18', name: 'xjn' },
-    { age: '28', name: 'zhj' },
+    { age: '18', name: 'Canan' },
+    { age: '28', name: 'Dany' },
   ]);
+
+  const handleClick = () => {
+    alert('hello world');
+  };
 
   return (
     <div style={styles.body}>

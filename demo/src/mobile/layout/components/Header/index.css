@@ -1,0 +1,9 @@
+.fuck {
+  position: relative;
+  width: 230px;
+  height: 67px;
+  background-color: #ff0000;
+}
+.header {
+  position: static;
+}
