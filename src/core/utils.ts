@@ -1,3 +1,4 @@
+// 公共方法
 import { IImport } from './interface';
 const find = require('lodash/find');
 const unset = require('lodash/unset');
@@ -10,7 +11,7 @@ const cssParser = require('css/lib/parse');
 import { DSL_CONFIG } from './consts'
 
 
-// 从 css 解析样式规则饿
+// 从 css 解析样式规则
 export const getCssRules = (text: string): {
   selectors: string,
   style: any
@@ -69,12 +70,12 @@ export const getGlobalClassNames = (cssObject, globalCssString) => {
     style: cssObject,
   };
 };
-
+//  判断表达式
 export const isExpression = (value) => {
   return /^\{\{.*\}\}$/.test(value);
 };
 
-// eg: hello_world => HelloWorld
+// 处理英文大小写下划线 eg: hello_world => HelloWorld
 export const line2Hump = (str) => {
   str = str.replace(/[_|-](\w)/g, (all, letter) => {
     return letter.toUpperCase();
@@ -82,7 +83,7 @@ export const line2Hump = (str) => {
   str = str.charAt(0).toUpperCase() + str.slice(1);
   return str;
 };
-
+// 判断空对象
 export const isEmptyObj = (o) => {
   if (o !== null && Object.prototype.toString.call(o) === '[object Object]') {
     return !Object.keys(o).length;
@@ -138,7 +139,7 @@ export const toString = (value) => {
 
   return String(value);
 };
-
+// 转大写字母
 export const toUpperCaseStart = (value) => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
@@ -342,7 +343,7 @@ export const traverseBrother = (json, callback) => {
   }
 };
 
-
+// 获取样式类名
 export const genStyleClass = (string, type) => {
   let classArray = string.split(' ');
   classArray = classArray.filter(name => !!name);
@@ -357,7 +358,7 @@ export const genStyleClass = (string, type) => {
   });
   return classArray.join(' ')
 }
-
+// 获取样式代码
 export const genStyleCode = (styles, key = '') => {
   return !/-/.test(key) && key.trim()
     ? `${styles}.${key}`
@@ -440,7 +441,7 @@ export const parseStyle = (style) => {
   return resultStyle;
 };
 
-// parse function, return params and content
+// 解析函数，返回参数和内容
 export const parseFunction = (func) => {
   const funcString = func.toString();
   const params = funcString.match(/\([^\(\)]*\)/)[0].slice(1, -1);
@@ -454,7 +455,7 @@ export const parseFunction = (func) => {
   };
 };
 
-// parse layer props(static values or expression)
+// parse layer props(static values or expression)：解析外部属性（静态值或表达式）
 export const parseProps = (value, isReactNode = false) => {
   if (typeof value === 'string') {
     if (isExpression(value)) {
@@ -604,7 +605,7 @@ export const generateScss = (schema) => {
 };
 
 
-// parse loop render 循环数据设置
+// parse loop render 解析循环数据设置
 export const parseLoop = (
       loop,
       loopArg,// 循环变量名（item和index）
@@ -645,7 +646,7 @@ export const parseLoop = (
   };
 };
 
-// parse state
+// parse state  解析state数据
 export const parseState = (states) => {
   let stateName = 'state';
   // hooks state
@@ -654,7 +655,7 @@ export const parseState = (states) => {
   )}] = useState(${toString(JSON.parse(states)) || null});`;
 };
 
-// replace state
+// replace state  
 export const replaceState = (render) => {
   // remove `this`
   let stateName = 'state';
@@ -716,7 +717,7 @@ export const parseLifeCycles = (schema, init) => {
   });
   return lifeCycles;
 };
-
+// 判断存在import
 export const existImport = (imports, singleImport) => {
   let exist = false;
   imports.forEach((item) => {
@@ -727,7 +728,7 @@ export const existImport = (imports, singleImport) => {
   return exist;
 };
 
-// parse async dataSource
+// parse async dataSource： 解析异步数据源
 export const parseDataSource = (data, imports: IImport[] = []) => {
   const name = data.id;
   const { uri, method, params } = data.options;
@@ -806,7 +807,7 @@ export const parseDataSource = (data, imports: IImport[] = []) => {
   };
 };
 
-// get children text
+// get children text ： 获取子级文本
 export const getText = (schema) => {
   let text = '';
 
@@ -831,7 +832,7 @@ export const getText = (schema) => {
   return text;
 };
 
-
+// 动画
 export const transAnimation = function (animation) {
   let keyFrames = ``;
   for (let i of animation.keyframes) {
@@ -848,7 +849,7 @@ ${keyFrames}
 `;
   return keyframes;
 };
-
+// 添加动画
 export const addAnimation = function (schema) {
   let animationRes = ``;
   traverse(schema, (json) => {
