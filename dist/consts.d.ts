@@ -42,4 +42,4 @@ export declare const OUTPUT_TYPE: {
     COMPONENT: string;
 };
 export declare let DSL_CONFIG: IDslConfig;
-export declare const initConfig: (cfg: any) => void;
+export declare const initConfig: (cfg: any) => any;

@@ -12,7 +12,7 @@ import {
   genStyleCode,//  样式代码
 } from './utils';
 
-// 常量名
+// 初始值
 import { 
   CSS_TYPE,// css类型
   COMPONENT_TYPE,//组件类型
@@ -30,7 +30,8 @@ import exportCreateApp from './exportCreateApp';
 // 导出全家样式
 import exportGlobalCss from './exportGlobalCss';
 
-// render代码（接受设计稿shema / 配置项option）
+
+// render代码（设计shema / 配置项option）
 module.exports = function(schema, option) {
   // get blocks json
   const blocks: any[] = [];
@@ -50,8 +51,6 @@ module.exports = function(schema, option) {
   const dslConfig = Object.assign(
     {
       scale: option.scale,
-      globalCss: true,
-      cssUnit: 'px',
       inlineStyle: CSS_TYPE.IMPORT_CLASS,
       componentStyle: COMPONENT_TYPE.HOOKS,
       htmlFontSize: 16
@@ -65,10 +64,44 @@ module.exports = function(schema, option) {
 
   // 初始化全局参数
   initConfig(dslConfig);
+  console.log('最终dsl',initConfig(dslConfig));
+
+  /* initConfig(dslConfig) = dslConfig + option
+  dslConfig:{
+    responseWidth: 750,
+    scale: 1,
+    globalCss: true,
+    cssUnit: 'px',
+    componentStyle: 'hooks',
+    inlineStyle: 'import',
+    outputStyle: 'project',
+    cssStyle: 'camelCase',
+    htmlFontSize: 16,
+    useHooks: true,
+    useTypescript: false
+  }
+  最终dsl：{
+    responseWidth: 750,
+    scale: 1,
+    globalCss: false,
+    cssUnit: 'px',
+    componentStyle: 'hooks',
+    inlineStyle: 'module_style',
+    outputStyle: 'component',
+    cssStyle: 'camelCase',
+    htmlFontSize: '16',
+    dsl: 'rax',
+    cssType: 'css',
+    jsx: 'javascript',
+    dslName: 'React-Ifeng',
+    responseHeight: 1334,
+    useHooks: true,
+    useTypescript: false
+  }
+  */
 
   // 可选 className name  style
   // inlineStyle = inlineStyle !== 'className';
-
 
   const { inlineStyle } = dslConfig
   // clear schema

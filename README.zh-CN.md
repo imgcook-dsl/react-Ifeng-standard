@@ -6,11 +6,13 @@
 <br/>
 
 ## 如何使用
-```
-npm run build 
-```
+拉取仓库代码后一定要进行npm run build命令，执行测试需要构建后的部分文件源码
 
 ```
+npm install
+
+npm run build 
+
 npm run demo
 ```
 ### 选择 DSL 代码生成

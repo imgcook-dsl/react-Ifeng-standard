@@ -1,0 +1,227 @@
+.list1V21 {
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 66.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 12.63rem;
+}
+.empty1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 46.88rem;
+  height: 7.63rem;
+}
+.header2 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 46.88rem;
+  height: 5rem;
+  padding-left: 1.88rem;
+  padding-right: 1.94rem;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.container5 {
+  display: flex;
+  align-items: center;
+  margin-top: 1.13rem;
+}
+.wrapper7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2.5rem;
+}
+.title1 {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 2.81rem;
+  color: #212223;
+  white-space: nowrap;
+}
+.horizontalLine {
+  position: relative;
+  overflow: hidden;
+  width: 1.75rem;
+  height: 0.38rem;
+  margin-top: 0.06rem;
+  background-color: #bd974c;
+  border-radius: 0.19rem;
+}
+.captionWrapper1 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: -0.44rem;
+  font-weight: 500;
+  line-height: 2.81rem;
+  white-space: nowrap;
+}
+.caption1 {
+  font-size: 2rem;
+  color: #7f7f7f;
+}
+.titleWrapper1 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1.25rem;
+  line-height: 2.5rem;
+  white-space: nowrap;
+}
+.title2 {
+  font-size: 1.75rem;
+  color: #4d4d4d;
+}
+.body2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 1.63rem;
+}
+.grid {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1.88rem;
+}
+.colItem0 {
+  margin-right: 0.63rem;
+}
+.empty2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 20rem;
+  height: 6.63rem;
+  border-radius: 0.5rem;
+  border-width: 0.06rem;
+  border-style: solid;
+  border-color: #bd974c;
+}
+.group2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: -0.06rem;
+}
+.captionWrapper2 {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 500;
+  line-height: 2.31rem;
+  white-space: pre;
+}
+.caption2 {
+  font-size: 1.63rem;
+  color: #bd974c;
+}
+.infoWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.19rem;
+  line-height: 2.06rem;
+  white-space: nowrap;
+}
+.info {
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: #bd974c;
+  text-overflow: ellipsis;
+}
+.colItem1 {
+  margin-right: 0.63rem;
+}
+.empty3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 20rem;
+  height: 6.63rem;
+  border-radius: 0.5rem;
+  border-width: 0.06rem;
+  border-style: solid;
+  border-color: rgba(158, 158, 158, 0.6);
+}
+.group3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: -0.06rem;
+}
+.titleWrapper2 {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 500;
+  line-height: 2.31rem;
+  white-space: pre;
+}
+.title3 {
+  font-size: 1.63rem;
+  color: #000000;
+}
+.metaWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.19rem;
+  line-height: 2.06rem;
+  white-space: nowrap;
+}
+.meta {
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: #212223;
+  text-overflow: ellipsis;
+}
+.container6 {
+  top: 0;
+  border-radius: 0.5rem;
+  border-width: 0.06rem;
+  border-style: solid;
+  border-color: rgba(158, 158, 158, 0.6);
+}
+.container7 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.captionWrapper3 {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 500;
+  line-height: 2.31rem;
+  white-space: pre;
+}
+.caption3 {
+  font-size: 1.63rem;
+  color: #000000;
+}
+.subtitleWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.19rem;
+  line-height: 2.06rem;
+  white-space: nowrap;
+}
+.subtitle {
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: #212223;
+  text-overflow: ellipsis;
+}
