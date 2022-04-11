@@ -8,7 +8,7 @@ import Mod4 from './components/Mod4/index.jsx';
 
 import styles from './index.css';
 
-const Layout = (props) => {
+const mobile = (props) => {
   return (
     <div className={styles.page}>
       <Mod0 />
@@ -19,4 +19,4 @@ const Layout = (props) => {
     </div>
   );
 };
-export default Layout;
+export default mobile;

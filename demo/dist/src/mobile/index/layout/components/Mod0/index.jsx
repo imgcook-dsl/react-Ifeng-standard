@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import styles from './index.css';
 
-const Mod0 = (props) => {
+const mobile = (props) => {
   return (
     <div className={styles.group}>
       <div className={styles.header}>
@@ -20,4 +20,4 @@ const Mod0 = (props) => {
     </div>
   );
 };
-export default Mod0;
+export default mobile;

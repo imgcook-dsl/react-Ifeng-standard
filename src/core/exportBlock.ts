@@ -46,13 +46,13 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   if(schema.componentName == 'Page'){
     // 单页面
     if(pagesCount == 1){
-      folderName = '';
+      folderName = 'src/mobile/index/layout';
     }else{
       folderName = 'pages/' + schema.fileName;
     }
     // filePathName = schema.fileName
   }else{
-    folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('components/' + schema.fileName);
+    folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('src/mobile/index/layout/components/' + schema.fileName);
   }
   schema.folderName = folderName;
 

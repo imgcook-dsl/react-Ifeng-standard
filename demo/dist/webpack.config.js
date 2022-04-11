@@ -15,7 +15,7 @@
     entry: [
       "webpack/hot/dev-server",
       "webpack-dev-server/client?http://localhost:3000",
-      "./src/mobile/index/App.js",
+      "./src/mobile/index/app.js",
     ], // 入口文件
     // 打包输出文件
     output: {
@@ -44,7 +44,7 @@
                 postcssOptions: {
                   plugins: [
                     adaptive({
-                      remUnit: 37.5,
+                      remUnit: 75,
                       autoRem: true,
                       useCssModules: true,
                     }),
@@ -55,10 +55,23 @@
             { loader: "less-loader" },
           ],
         },
+        // 模版语法
+        {
+          test: /(.html$)|(.ejs$)|(.handlebars$)|(.hbs)/,
+          loader: "handlebars-loader",
+        },
         {
           test: /.js|jsx$/, // 匹配js文件
           exclude: /node_modules/, // 排除node_modules文件
           use: [{ loader: "babel-loader" }], // babel编译:es6语法
+        },
+        {
+          test: /.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: "file-loader",
+            },
+          ],
         },
       ],
     },

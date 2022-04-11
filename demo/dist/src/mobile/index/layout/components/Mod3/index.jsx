@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import styles from './index.css';
 
-const Mod3 = (props) => {
+const mobile = (props) => {
   return (
     <div className={styles.list1V3}>
       <div className={styles.layer} />
@@ -67,4 +67,4 @@ const Mod3 = (props) => {
     </div>
   );
 };
-export default Mod3;
+export default mobile;

@@ -96,101 +96,118 @@ co(function* () {
     data // secha数据
   );
 
-  // 生成代码路径
+  // console.log('panelDisplay', panelDisplay)
 
-  const baseDir1 = "../demo";
-  const baseDir2 = "../demo/src/mobile/index";
-  const baseDir3 = "../demo/src/mobile/index/layout";
+  const baseDir = "../demo/dist";
 
-  // existsSync “同步"检测给定的路径是否存在
-  if (fs.existsSync(path.join(__dirname, baseDir2))) {
-    fs.rmdirSync(path.join(__dirname, baseDir2), { recursive: true });
-    // console.log('删除文件夹')
+  if (fs.existsSync(path.join(__dirname, baseDir))) {
+    fs.rmdirSync(path.join(__dirname, baseDir), { recursive: true });
+    console.log("删除文件夹");
   }
-  mkDirsSync(path.join(__dirname, baseDir2));
-  // console.log('创建文件夹', path.join(__dirname, baseDir))
-
+  mkDirsSync(path.join(__dirname, baseDir));
+  console.log("创建文件夹", path.join(__dirname, baseDir));
+  // const baseDir = '../code';
   // 生成到目标目录运行
-  // 根据设计稿自动生成组件目录
+
   panelDisplay.forEach((file) => {
     if (file.folder) {
-      let fileFolder = path.join(__dirname, `${baseDir3}/${file.folder}`);
+      let fileFolder = path.join(__dirname, `${baseDir}/${file.folder}`);
       if (!fs.existsSync(fileFolder)) {
         mkDirsSync(fileFolder);
       }
       fs.writeFileSync(
-        path.join(__dirname, `${baseDir3}/${file.folder}/${file.panelName}`),
+        path.join(__dirname, `${baseDir}/${file.folder}/${file.panelName}`),
         file.panelValue
       );
     } else {
-      console.log("file.panelName", file.panelName);
-
-      var webpackConfig = /webpack.config.js/;
-      var babelrc = /.babelrc/;
-      var gitignore = /.gitignore/;
-      var readme = /README.md/;
-      var package = /package.json/;
-      var indexJsx = /index.jsx/;
-      var indexCss = /index.css/;
-      var indexMoudelCss = /index.module.css/;
-
-      if (package.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir1}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (readme.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir1}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (babelrc.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir1}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (gitignore.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir1}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (webpackConfig.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir1}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (indexJsx.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir3}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (indexCss.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir3}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else if (indexMoudelCss.test(file.panelName)) {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir3}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      } else {
-        fs.writeFileSync(
-          path.join(__dirname, `${baseDir2}/${file.panelName}`),
-          file.panelValue
-        );
-        return;
-      }
+      fs.writeFileSync(
+        path.join(__dirname, `${baseDir}/${file.panelName}`),
+        file.panelValue
+      );
     }
   });
+
+  // console.log('创建文件夹', path.join(__dirname, baseDir))
+  // // 生成到目标目录运行
+  // // 根据设计稿自动生成组件目录
+  // panelDisplay.forEach((file) => {
+  //   if (file.folder) {
+  //     let fileFolder = path.join(__dirname, `${baseDir3}/${file.folder}`);
+  //     if (!fs.existsSync(fileFolder)) {
+  //       mkDirsSync(fileFolder);
+  //     }
+  //     fs.writeFileSync(
+  //       path.join(__dirname, `${baseDir3}/${file.folder}/${file.panelName}`),
+  //       file.panelValue
+  //     );
+  //   } else {
+  //     console.log("file.panelName", file.panelName);
+  //     var webpackConfig = /webpack.config.js/;
+  //     var babelrc = /.babelrc/;
+  //     var gitignore = /.gitignore/;
+  //     var readme = /README.md/;
+  //     var package = /package.json/;
+  //     var indexJsx = /index.jsx/;
+  //     var indexCss = /index.css/;
+  //     var indexMoudelCss = /index.module.css/;
+
+  //     if (package.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir1}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (readme.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir1}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (babelrc.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir1}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (gitignore.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir1}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (webpackConfig.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir1}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (indexJsx.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir3}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (indexCss.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir3}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else if (indexMoudelCss.test(file.panelName)) {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir3}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     } else {
+  //       fs.writeFileSync(
+  //         path.join(__dirname, `${baseDir2}/${file.panelName}`),
+  //         file.panelValue
+  //       );
+  //       return;
+  //     }
+  //   }
+  // });
 });
 
 // 创建文件夹

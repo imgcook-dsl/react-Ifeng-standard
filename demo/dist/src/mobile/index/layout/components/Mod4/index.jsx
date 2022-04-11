@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import styles from './index.css';
 
-const Mod4 = (props) => {
+const mobile = (props) => {
   return (
     <div className={styles.list3V1}>
       <div className={styles.header4}>
@@ -149,4 +149,4 @@ const Mod4 = (props) => {
     </div>
   );
 };
-export default Mod4;
+export default mobile;
