@@ -60,7 +60,7 @@ export let DSL_CONFIG: IDslConfig = {
   cssUnit: 'px',//'px' | 'vw' | 'rpx' | 'rem';//单位
   componentStyle: 'hooks',//'components' | 'hooks';//组件风格
   inlineStyle: 'module',//'import' | 'module' | 'inline' | 'module_style';// 样式引入方式
-  outputStyle: 'project',//'project' | 'component';// 导出格式
+  outputStyle: 'component',//'project' | 'component';// 导出格式
   cssStyle: 'camelCase',// 'kebabCase' | 'camelCase' | 'snakeCase',//样式名
   htmlFontSize: 16//基准字体
 };

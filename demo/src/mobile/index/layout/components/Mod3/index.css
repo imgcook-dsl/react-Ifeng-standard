@@ -1,54 +1,54 @@
 .list1V3 {
   position: absolute;
   display: flex;
-  left: 0;
-  top: 79.13rem;
+  left: 0px;
+  top: 1266px;
   flex-direction: column;
   align-items: flex-start;
-  height: 23.38rem;
+  height: 374px;
 }
 .layer {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 0px;
+  bottom: 0px;
   overflow: hidden;
-  width: 46.88rem;
-  height: 18.38rem;
+  width: 750px;
+  height: 294px;
   background-color: #ffffff;
 }
 .header3 {
   position: relative;
   display: flex;
   align-items: center;
-  height: 5rem;
-  padding-left: 1.88rem;
-  padding-right: 37rem;
+  height: 80px;
+  padding-left: 30px;
+  padding-right: 592px;
   background-color: #ffffff;
   font-weight: 500;
-  line-height: 2.81rem;
+  line-height: 45px;
   white-space: nowrap;
   box-sizing: border-box;
 }
 .titleWrapper3 {
   display: flex;
   align-items: flex-start;
-  margin-top: 0.06rem;
+  margin-top: 1px;
 }
 .title4 {
-  font-size: 2rem;
+  font-size: 32px;
   color: #212223;
 }
 .body3 {
   position: relative;
   display: flex;
   align-items: center;
-  margin-left: 1.63rem;
+  margin-left: 26px;
 }
 .containerItem01 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 0.63rem;
+  margin-right: 10px;
 }
 .wrapper8 {
   position: relative;
@@ -57,36 +57,36 @@
 }
 .entryPic {
   position: relative;
-  width: 16.5rem;
-  height: 11rem;
+  width: 264px;
+  height: 176px;
 }
 .wordWrapper {
   position: absolute;
   display: flex;
-  right: 0.56rem;
-  bottom: 0.63rem;
+  right: 9px;
+  bottom: 10px;
   align-items: flex-start;
-  line-height: 1.75rem;
+  line-height: 28px;
   white-space: nowrap;
 }
 .word {
-  font-size: 1.5rem;
+  font-size: 24px;
   color: #ffffff;
-  text-shadow: 0 0.13rem 0.13rem rgba(0, 0, 0, 0.30196078431372547);
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30196078431372547);
 }
 .captionWrapper4 {
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .caption4 {
   display: -webkit-inline-box;
   overflow: hidden;
-  width: 15.75rem;
-  height: 5rem;
-  font-size: 1.75rem;
+  width: 252px;
+  height: 80px;
+  font-size: 28px;
   color: #212223;
   text-overflow: ellipsis;
   webkit-box-orient: vertical;
@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 0.63rem;
+  margin-right: 10px;
 }
 .wrapper9 {
   position: relative;
@@ -105,36 +105,36 @@
 }
 .entryPic1 {
   position: relative;
-  width: 16.5rem;
-  height: 11rem;
+  width: 264px;
+  height: 176px;
 }
 .tagWrapper1 {
   position: absolute;
   display: flex;
-  right: 0.56rem;
-  bottom: 0.63rem;
+  right: 9px;
+  bottom: 10px;
   align-items: flex-start;
-  line-height: 1.75rem;
+  line-height: 28px;
   white-space: nowrap;
 }
 .tag3 {
-  font-size: 1.5rem;
+  font-size: 24px;
   color: #ffffff;
-  text-shadow: 0 0.13rem 0.13rem rgba(0, 0, 0, 0.30196078431372547);
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30196078431372547);
 }
 .titleWrapper4 {
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .title5 {
   display: -webkit-inline-box;
   overflow: hidden;
-  width: 15.75rem;
-  height: 5rem;
-  font-size: 1.75rem;
+  width: 252px;
+  height: 80px;
+  font-size: 28px;
   color: #212223;
   text-overflow: ellipsis;
   webkit-box-orient: vertical;
@@ -144,7 +144,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 16rem;
+  width: 256px;
 }
 .itemWrapper {
   position: relative;
@@ -153,23 +153,23 @@
   align-items: flex-start;
 }
 .item {
-  width: 11rem;
-  height: 11rem;
+  width: 176px;
+  height: 176px;
 }
 .captionWrapper5 {
   position: relative;
   display: flex;
   align-items: flex-start;
   align-self: center;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .caption5 {
   display: -webkit-inline-box;
   overflow: hidden;
-  width: 15.75rem;
-  height: 5rem;
-  font-size: 1.75rem;
+  width: 252px;
+  height: 80px;
+  font-size: 28px;
   color: #212223;
   text-overflow: ellipsis;
   webkit-box-orient: vertical;

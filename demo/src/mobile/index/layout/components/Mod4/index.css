@@ -3,27 +3,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 36.13rem;
+  margin-top: 578px;
 }
 .header4 {
   position: relative;
   display: flex;
   align-items: center;
-  width: 46.88rem;
-  height: 5rem;
+  width: 750px;
+  height: 80px;
   background-color: #ffffff;
   font-weight: 500;
-  line-height: 2.81rem;
+  line-height: 45px;
   white-space: nowrap;
 }
 .container8 {
   display: flex;
   align-items: flex-start;
-  margin-top: 0.06rem;
-  margin-left: 1.88rem;
+  margin-top: 1px;
+  margin-left: 30px;
 }
 .more {
-  font-size: 2rem;
+  font-size: 32px;
   color: #212223;
 }
 .body4 {
@@ -37,28 +37,28 @@
 .wrapper10 {
   position: absolute;
   display: flex;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
-  width: 46.88rem;
+  width: 750px;
   background-color: #ffffff;
 }
 .empty4 {
-  width: 1.88rem;
-  height: 12.25rem;
+  width: 30px;
+  height: 196px;
 }
 .group4 {
   display: flex;
   align-items: flex-start;
-  width: 1.88rem;
+  width: 30px;
 }
 .empty5 {
-  width: 43.13rem;
-  height: 0.06rem;
-  margin-top: 12.19rem;
-  margin-left: -43.13rem;
-  border-width: 0.06rem;
+  width: 690px;
+  height: 1px;
+  margin-top: 195px;
+  margin-left: -690px;
+  border-width: 1px;
   border-style: solid;
   border-color: #eeeeee;
 }
@@ -66,36 +66,36 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  margin-right: 1.13rem;
+  margin-right: 18px;
 }
 .entryPic2 {
   position: relative;
-  width: 16.5rem;
-  height: 9.25rem;
+  width: 264px;
+  height: 148px;
 }
 .label1 {
   position: absolute;
-  right: 1rem;
-  bottom: 0.69rem;
-  font-size: 1.5rem;
-  line-height: 2.06rem;
+  right: 16px;
+  bottom: 11px;
+  font-size: 24px;
+  line-height: 33px;
   color: #ffffff;
   white-space: nowrap;
-  text-shadow: 0 0.13rem 0.13rem rgba(0, 0, 0, 0.30196078431372547);
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30196078431372547);
 }
 .wrapper12 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 0.13rem;
+  margin-top: 2px;
 }
 .group5 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 0.38rem;
+  margin-left: 6px;
   white-space: nowrap;
 }
 .titleWrapper5 {
@@ -103,11 +103,11 @@
   display: flex;
   align-items: flex-start;
   font-weight: 500;
-  line-height: 2.63rem;
+  line-height: 42px;
 }
 .title6 {
   overflow: hidden;
-  font-size: 1.88rem;
+  font-size: 30px;
   color: #212223;
   text-overflow: ellipsis;
 }
@@ -115,12 +115,12 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .caption6 {
   overflow: hidden;
-  font-size: 1.75rem;
+  font-size: 28px;
   color: #4d4d4d;
   text-overflow: ellipsis;
 }
@@ -128,27 +128,27 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 0.75rem;
+  margin-top: 12px;
 }
 .iconPlayWrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 .iconPlay {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
 }
 .wordWrapper1 {
   display: flex;
   align-items: flex-start;
-  margin-top: -0.13rem;
-  line-height: 1.88rem;
+  margin-top: -2px;
+  line-height: 30px;
   white-space: nowrap;
 }
 .word1 {
-  font-size: 1.38rem;
+  font-size: 22px;
   color: #9e9e9e;
 }
 .rowItem1 {
@@ -156,28 +156,28 @@
 .wrapper13 {
   position: absolute;
   display: flex;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
-  width: 46.88rem;
+  width: 750px;
   background-color: #ffffff;
 }
 .empty6 {
-  width: 1.88rem;
-  height: 12.25rem;
+  width: 30px;
+  height: 196px;
 }
 .group7 {
   display: flex;
   align-items: flex-start;
-  width: 1.88rem;
+  width: 30px;
 }
 .empty7 {
-  width: 43.13rem;
-  height: 0.06rem;
-  margin-top: 12.19rem;
-  margin-left: -43.13rem;
-  border-width: 0.06rem;
+  width: 690px;
+  height: 1px;
+  margin-top: 195px;
+  margin-left: -690px;
+  border-width: 1px;
   border-style: solid;
   border-color: #eeeeee;
 }
@@ -185,36 +185,36 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  margin-right: 1.13rem;
+  margin-right: 18px;
 }
 .entryPic3 {
   position: relative;
-  width: 16.5rem;
-  height: 9.25rem;
+  width: 264px;
+  height: 148px;
 }
 .tag4 {
   position: absolute;
-  right: 1rem;
-  bottom: 0.69rem;
-  font-size: 1.5rem;
-  line-height: 2.06rem;
+  right: 16px;
+  bottom: 11px;
+  font-size: 24px;
+  line-height: 33px;
   color: #ffffff;
   white-space: nowrap;
-  text-shadow: 0 0.13rem 0.13rem rgba(0, 0, 0, 0.30196078431372547);
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30196078431372547);
 }
 .wrapper15 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 0.13rem;
+  margin-top: 2px;
 }
 .group8 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 0.38rem;
+  margin-left: 6px;
   white-space: nowrap;
 }
 .titleWrapper6 {
@@ -222,11 +222,11 @@
   display: flex;
   align-items: flex-start;
   font-weight: 500;
-  line-height: 2.63rem;
+  line-height: 42px;
 }
 .title7 {
   overflow: hidden;
-  font-size: 1.88rem;
+  font-size: 30px;
   color: #212223;
   text-overflow: ellipsis;
 }
@@ -234,12 +234,12 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .caption7 {
   overflow: hidden;
-  font-size: 1.75rem;
+  font-size: 28px;
   color: #4d4d4d;
   text-overflow: ellipsis;
 }
@@ -247,27 +247,27 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 0.75rem;
+  margin-top: 12px;
 }
 .iconPlayWrapper1 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 .iconPlay1 {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
 }
 .labelWrapper1 {
   display: flex;
   align-items: flex-start;
-  margin-top: -0.13rem;
-  line-height: 1.88rem;
+  margin-top: -2px;
+  line-height: 30px;
   white-space: nowrap;
 }
 .label2 {
-  font-size: 1.38rem;
+  font-size: 22px;
   color: #9e9e9e;
 }
 .rowItem2 {
@@ -275,28 +275,28 @@
 .wrapper16 {
   position: absolute;
   display: flex;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   justify-content: space-between;
   align-items: center;
-  width: 46.88rem;
+  width: 750px;
   background-color: #ffffff;
 }
 .empty8 {
-  width: 1.88rem;
-  height: 12.25rem;
+  width: 30px;
+  height: 196px;
 }
 .group10 {
   display: flex;
   align-items: flex-start;
-  width: 1.88rem;
+  width: 30px;
 }
 .empty9 {
-  width: 43.13rem;
-  height: 0.06rem;
-  margin-top: 12.19rem;
-  margin-left: -43.13rem;
-  border-width: 0.06rem;
+  width: 690px;
+  height: 1px;
+  margin-top: 195px;
+  margin-left: -690px;
+  border-width: 1px;
   border-style: solid;
   border-color: #eeeeee;
 }
@@ -304,36 +304,36 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  margin-right: 1.13rem;
+  margin-right: 18px;
 }
 .entryPic4 {
   position: relative;
-  width: 16.5rem;
-  height: 9.25rem;
+  width: 264px;
+  height: 148px;
 }
 .word2 {
   position: absolute;
-  right: 1rem;
-  bottom: 0.69rem;
-  font-size: 1.5rem;
-  line-height: 2.06rem;
+  right: 16px;
+  bottom: 11px;
+  font-size: 24px;
+  line-height: 33px;
   color: #ffffff;
   white-space: nowrap;
-  text-shadow: 0 0.13rem 0.13rem rgba(0, 0, 0, 0.30196078431372547);
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30196078431372547);
 }
 .wrapper18 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 0.13rem;
+  margin-top: 2px;
 }
 .group11 {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 0.38rem;
+  margin-left: 6px;
   white-space: nowrap;
 }
 .titleWrapper7 {
@@ -341,11 +341,11 @@
   display: flex;
   align-items: flex-start;
   font-weight: 500;
-  line-height: 2.63rem;
+  line-height: 42px;
 }
 .title8 {
   overflow: hidden;
-  font-size: 1.88rem;
+  font-size: 30px;
   color: #212223;
   text-overflow: ellipsis;
 }
@@ -353,12 +353,12 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem;
-  line-height: 2.5rem;
+  margin-top: 8px;
+  line-height: 40px;
 }
 .caption8 {
   overflow: hidden;
-  font-size: 1.75rem;
+  font-size: 28px;
   color: #4d4d4d;
   text-overflow: ellipsis;
 }
@@ -366,26 +366,26 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 0.75rem;
+  margin-top: 12px;
 }
 .iconPlayWrapper2 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 .iconPlay2 {
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
 }
 .tagWrapper2 {
   display: flex;
   align-items: flex-start;
-  margin-top: -0.13rem;
-  line-height: 1.88rem;
+  margin-top: -2px;
+  line-height: 30px;
   white-space: nowrap;
 }
 .tag5 {
-  font-size: 1.38rem;
+  font-size: 22px;
   color: #9e9e9e;
 }

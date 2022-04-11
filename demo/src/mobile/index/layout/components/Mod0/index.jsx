@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import styles from './index.module.css';
+import styles from './index.css';
 
 const Mod0 = (props) => {
   return (

@@ -60,26 +60,15 @@ module.exports = function(schema, option) {
 
   dslConfig.useHooks = dslConfig.componentStyle ===  COMPONENT_TYPE.HOOKS;
   dslConfig.useTypescript = dslConfig.jsx === 'typescript'
+  // 制导出格式 'project' | 'component' =》强制导出格式project
+  dslConfig.outputStyle = 'project'
   option.dslConfig = dslConfig;
 
   // 初始化全局参数
   initConfig(dslConfig);
-  console.log('最终dsl',initConfig(dslConfig));
+  // console.log('最终dsl',initConfig(dslConfig));
 
   /* initConfig(dslConfig) = dslConfig + option
-  dslConfig:{
-    responseWidth: 750,
-    scale: 1,
-    globalCss: true,
-    cssUnit: 'px',
-    componentStyle: 'hooks',
-    inlineStyle: 'import',
-    outputStyle: 'project',
-    cssStyle: 'camelCase',
-    htmlFontSize: 16,
-    useHooks: true,
-    useTypescript: false
-  }
   最终dsl：{
     responseWidth: 750,
     scale: 1,
@@ -198,7 +187,7 @@ module.exports = function(schema, option) {
     panelDisplay = panelDisplay.concat(result);
   }
 
-  // 导出格式（完成项目/仅组件）
+  // 导出格式（全部项目/组件）
   if(dslConfig.outputStyle == OUTPUT_TYPE.PROJECT){
     // 依赖 package.json
     const dependencies = {};

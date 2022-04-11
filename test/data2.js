@@ -5781,7 +5781,7 @@ module.exports = {
   imgcook: {
     restore_id: "bde26ec9-76cf-416b-a697-cd03fcc9a462",
     dslConfig: {
-      cssUnit: "rem",
+      cssUnit: "px",
       dsl: "react-ifeng-standard",
       componentStyle: "hooks",
       cssStyle: "camelCase",

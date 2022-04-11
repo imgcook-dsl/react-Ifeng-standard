@@ -91,8 +91,8 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   // init
   const init: string[] = [];
 
-  const cssFileName = `${filePathName}${dslConfig.inlineStyle == CSS_TYPE.MODULE_CLASS ? '.module' : ''}.${dslConfig.cssType || 'css'}`
-
+  // const cssFileName = `${filePathName}${dslConfig.inlineStyle == CSS_TYPE.MODULE_CLASS ? '.module' : ''}.${dslConfig.cssType || 'css'}`
+  const cssFileName = `${filePathName}.${dslConfig.cssType || 'css'}`
 
   if (dslConfig.inlineStyle !== CSS_TYPE.INLINE_CSS) {
     if (isExportGlobalFile) {
@@ -206,7 +206,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
           const compPath = rootSchema.componentName == 'Page' ? './components' : '..';
           if(compName){
             importMods.push({
-              _import: `import ${compName} from '${compPath}/${compName}';`,
+              _import: `import ${compName} from '${compPath}/${compName}/index.jsx';`,
             });
           }
           delete style[className]
