@@ -25,7 +25,10 @@ const mobile = (props) => {
           <div className={styles.wrapper2}>
             <img
               className={styles.iconChat}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50c9e610b59b11ec95b04da6c9445af8.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50c9e610b59b11ec95b04da6c9445af8.png')
+                  .default
+              }
             />
             <span className={styles.num} lines={1}>
               1345
@@ -56,11 +59,17 @@ const mobile = (props) => {
             <div className={styles.group1}>
               <img
                 className={styles.largeIcon}
-                src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50e05440b59b11ec958a09e4edf763b7.png'}
+                src={
+                  require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50e05440b59b11ec958a09e4edf763b7.png')
+                    .default
+                }
               />
               <img
                 className={styles.iconComplete}
-                src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4fe2e170b59b11ec9bf31162114c6041.png'}
+                src={
+                  require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4fe2e170b59b11ec9bf31162114c6041.png')
+                    .default
+                }
               />
             </div>
             <div className={styles.videoWrapper}>
@@ -81,7 +90,10 @@ const mobile = (props) => {
           <div className={styles.iconLikeWrapper}>
             <img
               className={styles.iconLike}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/506ad620b59b11ec90f12199faeba7d5.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/506ad620b59b11ec90f12199faeba7d5.png')
+                  .default
+              }
             />
           </div>
           <div className={styles.wrapper4}>
@@ -94,7 +106,10 @@ const mobile = (props) => {
           <div className={styles.iconStarWrapper}>
             <img
               className={styles.iconStar}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/506be790b59b11ecb68f21bd8980e873.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/506be790b59b11ecb68f21bd8980e873.png')
+                  .default
+              }
             />
           </div>
           <div className={styles.wrapper5}>
@@ -107,7 +122,10 @@ const mobile = (props) => {
           <div className={styles.iconWechatWrapper}>
             <img
               className={styles.iconWechat}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5058fbd0b59b11ecbc6b6f565c95302d.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5058fbd0b59b11ecbc6b6f565c95302d.png')
+                  .default
+              }
             />
           </div>
           <div className={styles.tagWrapper}>
@@ -120,7 +138,10 @@ const mobile = (props) => {
           <div className={styles.wrapper6}>
             <img
               className={styles.icon}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50572710b59b11ec853d8df02c51a0df.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/50572710b59b11ec853d8df02c51a0df.png')
+                  .default
+              }
             />
           </div>
           <div className={styles.labelWrapper}>

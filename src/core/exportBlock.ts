@@ -1,3 +1,4 @@
+// renderBlock
 import { IPanelDisplay, IImport } from './interface';
 import {
   toString,
@@ -18,6 +19,7 @@ import {
   addAnimation,
 } from './utils';
 
+// 变量
 import { CSS_TYPE, OUTPUT_TYPE, prettierJsOpt, prettierCssOpt, prettierLessOpt, prettierScssOpt } from './consts';
 
 // render代码（设计稿shema / 配置项option）
@@ -41,6 +43,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   const { cssUnit } = dslConfig;
   const rootSchema = schema;
 
+  // render对应目录
   let folderName;
   let filePathName = 'index';
   if(schema.componentName == 'Page'){
@@ -52,6 +55,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     }
     // filePathName = schema.fileName
   }else{
+    // components组件
     folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('src/mobile/index/layout/components/' + schema.fileName);
   }
   schema.folderName = folderName;
@@ -91,20 +95,26 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   // init
   const init: string[] = [];
 
+  // 去掉modules后缀
   // const cssFileName = `${filePathName}${dslConfig.inlineStyle == CSS_TYPE.MODULE_CLASS ? '.module' : ''}.${dslConfig.cssType || 'css'}`
   const cssFileName = `${filePathName}.${dslConfig.cssType || 'css'}`
 
+  // render css
   if (dslConfig.inlineStyle !== CSS_TYPE.INLINE_CSS) {
+    // global
     if (isExportGlobalFile) {
       importStyles.push(`import './global.css';`);
     }
+    // import
     if (dslConfig.inlineStyle == CSS_TYPE.IMPORT_CLASS) {
       importStyles.push(`import './${cssFileName}';`);
     } else {
+      // modules import 
       importStyles.push(`import styles from './${cssFileName}';`);
     }
   }
-  // 处理导入（第三方）
+
+  // 设置组件导入
   const collectImports = (componentName) => {
     let componentMap = componentsMap[componentName] || {};
     let packageName =
@@ -134,14 +144,18 @@ export default function exportMod(schema, option):IPanelDisplay[] {
    * @returns
    */
   const generateRender = (json, isReplace = false): string => {
+    
+    // 排除 string
     if(typeof json == 'string'){
       return json
     }
+    // 递归render子项
     if(Array.isArray(json)){
       return (json.map(item=>{
         return generateRender(item, isReplace)
       })).join('')
     }
+
     const componentName = json.componentName;
     const type = json.componentName.toLowerCase();  
     let className = json.props && json.props.className;
@@ -161,6 +175,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         }
       }
 
+      // 渲染属性
       if (
         ['className', 'style', 'text', 'src', 'key', 'codeStyle'].indexOf(
           key
@@ -191,8 +206,12 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         xml = `<span ${classString} ${props}>${innerText || ''}</span>`;
         break;
       case 'image':
+       
         let source = parseProps(json.props.src);
-        source = (source && `src={${source}}`) || '';
+        // 正则提取路径中文件名
+        let value = source.match(/[A-Za-z0-9]+.(png|jpe?g|gif)/)[0].split('.')[0]
+
+        source = (source && `src={require(${source}).default}`) || '';
         xml = `<img ${classString} ${props} ${source} />`;
         break;
 

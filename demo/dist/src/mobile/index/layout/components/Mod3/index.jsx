@@ -18,7 +18,10 @@ const mobile = (props) => {
           <div className={styles.wrapper8}>
             <img
               className={styles.entryPic}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5c9a7ef0b59b11ec888be34f50965030.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5c9a7ef0b59b11ec888be34f50965030.png')
+                  .default
+              }
             />
             <div className={styles.wordWrapper}>
               <span className={styles.word} lines={1}>
@@ -36,7 +39,10 @@ const mobile = (props) => {
           <div className={styles.wrapper9}>
             <img
               className={styles.entryPic1}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5a2168a0b59b11ecb68f21bd8980e873.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5a2168a0b59b11ecb68f21bd8980e873.png')
+                  .default
+              }
             />
             <div className={styles.tagWrapper1}>
               <span className={styles.tag3} lines={1}>
@@ -54,7 +60,10 @@ const mobile = (props) => {
           <div className={styles.itemWrapper}>
             <img
               className={styles.item}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5242f180b59b11eca2c581813b413e4a.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5242f180b59b11eca2c581813b413e4a.png')
+                  .default
+              }
             />
           </div>
           <div className={styles.captionWrapper5}>

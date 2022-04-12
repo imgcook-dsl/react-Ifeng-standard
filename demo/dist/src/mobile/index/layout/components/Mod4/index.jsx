@@ -23,7 +23,10 @@ const mobile = (props) => {
           <div className={styles.wrapper11}>
             <img
               className={styles.entryPic2}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/581963a0b59b11eca2c581813b413e4a.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/581963a0b59b11eca2c581813b413e4a.png')
+                  .default
+              }
             />
             <span className={styles.label1} lines={1}>
               全1集
@@ -46,7 +49,10 @@ const mobile = (props) => {
               <div className={styles.iconPlayWrapper}>
                 <img
                   className={styles.iconPlay}
-                  src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff6dea0b59b11ec9b6c27374f6fb473.png'}
+                  src={
+                    require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff6dea0b59b11ec9b6c27374f6fb473.png')
+                      .default
+                  }
                 />
               </div>
               <div className={styles.wordWrapper1}>
@@ -67,7 +73,10 @@ const mobile = (props) => {
           <div className={styles.wrapper14}>
             <img
               className={styles.entryPic3}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/564ce100b59b11ec9b593350ab5d45e4.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/564ce100b59b11ec9b593350ab5d45e4.png')
+                  .default
+              }
             />
             <span className={styles.tag4} lines={1}>
               全1集
@@ -90,7 +99,10 @@ const mobile = (props) => {
               <div className={styles.iconPlayWrapper1}>
                 <img
                   className={styles.iconPlay1}
-                  src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff7f010b59b11ec8ea205d5b701cc38.png'}
+                  src={
+                    require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff7f010b59b11ec8ea205d5b701cc38.png')
+                      .default
+                  }
                 />
               </div>
               <div className={styles.labelWrapper1}>
@@ -111,7 +123,10 @@ const mobile = (props) => {
           <div className={styles.wrapper17}>
             <img
               className={styles.entryPic4}
-              src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5482a850b59b11ec9b6c27374f6fb473.png'}
+              src={
+                require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/5482a850b59b11ec9b6c27374f6fb473.png')
+                  .default
+              }
             />
             <span className={styles.word2} lines={1}>
               全1集
@@ -134,7 +149,10 @@ const mobile = (props) => {
               <div className={styles.iconPlayWrapper2}>
                 <img
                   className={styles.iconPlay2}
-                  src={'https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff66970b59b11ec888be34f50965030.png'}
+                  src={
+                    require('https://ai-sample.oss-cn-hangzhou.aliyuncs.com/test/4ff66970b59b11ec888be34f50965030.png')
+                      .default
+                  }
                 />
               </div>
               <div className={styles.tagWrapper2}>
