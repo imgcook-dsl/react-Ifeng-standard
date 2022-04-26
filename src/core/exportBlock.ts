@@ -497,6 +497,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   // start parse schema
   transform(schema);
   let indexValue = '';
+  let logicalValue = '' // 逻辑组件代码
   if (dslConfig.useHooks) {
     // const hooksView = generateRender(schema);
     // const hasDispatch = hooksView.match('dispatch');
@@ -511,6 +512,21 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       ${classes.join('\n')}
 
     `;
+    // 逻辑组件代码
+    logicalValue = `
+    import React, { useState, useEffect } from 'react';
+
+    import RenderUI from './renderUI';
+
+    const mobile = (props) => {
+      return (
+        
+         <RenderUI /> 
+        
+      );
+    };
+    export default mobile;
+  `;
   } else {
     indexValue = `
     'use strict';
@@ -532,15 +548,35 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   // 获取当前 节点 所有 动画参数
   const animationKeyframes = addAnimation(schema);
 
-  const panelDisplay: IPanelDisplay[] = [
-    {
+  const panelDisplay: IPanelDisplay[] = [];
+
+  // 添加renderUI组件
+  if(schema.componentName == 'Page'){
+    panelDisplay.push({
       panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
       panelValue: prettier.format(indexValue, prettierJsOpt),
       panelType: dslConfig.useTypescript?'tsx': 'jsx',
       folder: folderName,
       panelImports: imports,
-    },
-  ];
+    });
+  }else{
+    panelDisplay.push({
+      panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
+      panelValue: prettier.format(indexValue, prettierJsOpt),
+      panelType: dslConfig.useTypescript?'tsx': 'jsx',
+      folder: `${folderName}/renderUI`,
+      panelImports: imports,
+    });
+
+    panelDisplay.push({
+      panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
+      panelValue: prettier.format(logicalValue, prettierJsOpt),
+      panelType: dslConfig.useTypescript?'tsx': 'jsx',
+      folder: folderName,
+      panelImports: imports,
+    });
+  }
+
 
   // 非内联模式 才引入 index.module.css
   if (dslConfig.inlineStyle !== CSS_TYPE.INLINE_CSS) {
@@ -566,14 +602,23 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         )
     }
  
-      
-    panelDisplay.push({
-      panelName: cssFileName,
-      panelValue: cssPanelValue,
-      panelType: dslConfig.cssType || 'css',
-      folder: folderName,
-    });
-    
+
+    // 添加renderUI组件css
+    if(schema.componentName !== 'Page'){
+      panelDisplay.push({
+        panelName: cssFileName,
+        panelValue: cssPanelValue,
+        panelType: dslConfig.cssType || 'css',
+        folder: `${folderName}/renderUI`,
+      });
+    }else{
+      panelDisplay.push({
+        panelName: cssFileName,
+        panelValue: cssPanelValue,
+        panelType: dslConfig.cssType || 'css',
+        folder: folderName,
+      });
+    }
   }
 
   // 只有一个模块时，生成到当前模块
@@ -586,7 +631,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     });
   }
   
-  
+  console.log("----",panelDisplay);
   // 输出代码
   return panelDisplay;
 }
