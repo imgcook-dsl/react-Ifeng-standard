@@ -35,6 +35,8 @@ import exportGlobalCss from './exportGlobalCss';
 module.exports = function(schema, option) {
   // get blocks json
   const blocks: any[] = [];
+  // get components json
+  const components: any[] = [];
   const pages: any[] = []
 
   // 参数设置
@@ -98,9 +100,15 @@ module.exports = function(schema, option) {
 
   // 记录所有blocks
   traverse(schema, (json) => {
+
     switch (json.componentName.toLowerCase()) {
       case 'block':
+        
         blocks.push(json);
+        break;
+      case 'component':
+
+        components.push(json);
         break;
       case 'page':
         pages.push(json);
@@ -177,6 +185,14 @@ module.exports = function(schema, option) {
     blocks.forEach((block) => {
       // 渲染代码
       const result = exportBlock(block, option);
+      // 合并
+      panelDisplay = panelDisplay.concat(result);
+    });
+  // 导出component代码目录
+  components.length > 0 &&
+  components.forEach((component) => {
+      // 渲染代码
+      const result = exportBlock(component, option);
       // 合并
       panelDisplay = panelDisplay.concat(result);
     });

@@ -46,6 +46,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
   // render对应目录
   let folderName;
   let filePathName = 'index';
+
   if(schema.componentName == 'Page'){
     // 单页面
     if(pagesCount == 1){
@@ -53,11 +54,20 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     }else{
       folderName = 'pages/' + schema.fileName;
     }
-    // filePathName = schema.fileName
+
+  }else if(schema.componentName == 'Block'){
+
+      // Block组件
+      folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('src/mobile/index/layout/components/' + schema.fileName);
+
   }else{
-    // components组件
-    folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('src/mobile/index/layout/components/' + schema.fileName);
+      console.log('sourceFileName:',schema.sourceFileName);
+      
+      // Components组件
+      folderName = pagesCount == 0 && blocksCount == 1 && dslConfig.outputStyle !== OUTPUT_TYPE.PROJECT? '' : ('src/mobile/index/layout/components/' +`${schema?.sourceFileName}/`+ schema.fileName);
   }
+
+  
   schema.folderName = folderName;
 
   const globalCss = pageGlobalCss + '\n' + (schema.css || '');
@@ -219,10 +229,14 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       case 'block':
       case 'component':
         if (isReplace) {
+          console.log('isReplace',isReplace);
+          
           const compName = json.fileName;
           xml = `<${compName} />`;
+
           // 当前是 Page 模块
-          const compPath = rootSchema.componentName == 'Page' ? './components' : '..';
+          const compPath = rootSchema.componentName == 'Page' ? './components' : '.';
+
           if(compName){
             importMods.push({
               _import: `import ${compName} from '${compPath}/${compName}/index.jsx';`,
@@ -550,6 +564,9 @@ export default function exportMod(schema, option):IPanelDisplay[] {
 
   const panelDisplay: IPanelDisplay[] = [];
 
+  // 设置Block文件内容及目录
+  (function setBlock(){
+    const isComponent = schema.children.findIndex(item=>item.componentName === 'Component')
   // 添加renderUI组件
   if(schema.componentName == 'Page'){
     panelDisplay.push({
@@ -559,7 +576,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       folder: folderName,
       panelImports: imports,
     });
-  }else{
+  }else if(schema.componentName == 'Block' && isComponent === -1){
     panelDisplay.push({
       panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
       panelValue: prettier.format(indexValue, prettierJsOpt),
@@ -575,8 +592,17 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       folder: folderName,
       panelImports: imports,
     });
+  }else{ 
+    panelDisplay.push({
+      panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
+      panelValue: prettier.format(indexValue, prettierJsOpt),
+      panelType: dslConfig.useTypescript?'tsx': 'jsx',
+      folder: `${folderName}`,
+      panelImports: imports,
+    });
+    
   }
-
+  })()
 
   // 非内联模式 才引入 index.module.css
   if (dslConfig.inlineStyle !== CSS_TYPE.INLINE_CSS) {
@@ -603,8 +629,16 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     }
  
 
-    // 添加renderUI组件css
-    if(schema.componentName !== 'Page'){
+    const isComponent = schema.children.findIndex(item=>item.componentName === 'Component')
+    // 添加renderUI组件
+    if(schema.componentName == 'Page'){
+      panelDisplay.push({
+        panelName: cssFileName,
+        panelValue: cssPanelValue,
+        panelType: dslConfig.cssType || 'css',
+        folder: `${folderName}`,
+      });
+    }else if(schema.componentName == 'Block' && isComponent === -1){
       panelDisplay.push({
         panelName: cssFileName,
         panelValue: cssPanelValue,
@@ -616,9 +650,10 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         panelName: cssFileName,
         panelValue: cssPanelValue,
         panelType: dslConfig.cssType || 'css',
-        folder: folderName,
+        folder: `${folderName}`,
       });
     }
+   
   }
 
   // 只有一个模块时，生成到当前模块
@@ -631,7 +666,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
     });
   }
   
-  console.log("----",panelDisplay);
+  // console.log("----",panelDisplay);
   // 输出代码
   return panelDisplay;
 }

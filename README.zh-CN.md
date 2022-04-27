@@ -6,15 +6,21 @@
 <br/>
 
 ## 如何使用
-拉取仓库代码后一定要进行npm run build命令，执行测试需要构建后的部分文件源码
+
+拉取仓库代码后一定要进行 npm run build 命令，执行测试需要构建后的部分文件源码
 
 ```
 npm install
 
-npm run build 
+npm run build
 
 npm run demo
 ```
+
+## 嵌套规则
+
+Page>Block>Components
+
 ### 选择 DSL 代码生成
 
 DSL 使用方式是在[编辑器](https://www.imgcook.com/editor#/)中点击「生成代码」按钮选择的 DSL 列表默认加载 DSL 官方提供的和自己定义的如图。

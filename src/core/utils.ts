@@ -293,13 +293,25 @@ export const initSchema = (schema) => {
   });
 };
 
+// 记录上一次文件名字
+let sourceFileName = ''
 // 遍历节点
 export const traverse = (json, callback) => {
+
   if (Array.isArray(json)) {
     json.forEach((node) => {
       traverse(node, callback)
     });
     return
+  }
+
+  // 记录Block文件名
+  if(json.componentName === 'Block'){
+    sourceFileName =  json.fileName
+  }
+  // Component传入父文件名
+  if(json.componentName === 'Component'){
+    json.sourceFileName = sourceFileName
   }
 
   // 去除 class 空格
