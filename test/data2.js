@@ -133,7 +133,7 @@ module.exports = {
         "nodeLayerName": "statusBar#merge#"
       }]
     }, {
-      "componentName": "Component",
+      "componentName": "Div",
       "id": "1164bb44-83e4-4a60-a8f8-191e2dba8044",
       "props": {
         "style": {

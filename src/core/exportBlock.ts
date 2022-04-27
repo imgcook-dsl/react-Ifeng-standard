@@ -576,7 +576,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       folder: folderName,
       panelImports: imports,
     });
-  }else if(schema.componentName == 'Block' && isComponent === -1){
+  }else if(schema.componentName == 'Block' && isComponent === -1){ // 子组件不存在Component
     panelDisplay.push({
       panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
       panelValue: prettier.format(indexValue, prettierJsOpt),
@@ -592,7 +592,7 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       folder: folderName,
       panelImports: imports,
     });
-  }else{ 
+  }else if(schema.componentName == 'Block' && isComponent > -1){ 
     panelDisplay.push({
       panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
       panelValue: prettier.format(indexValue, prettierJsOpt),
@@ -601,6 +601,23 @@ export default function exportMod(schema, option):IPanelDisplay[] {
       panelImports: imports,
     });
     
+
+  }else{
+    panelDisplay.push({
+      panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
+      panelValue: prettier.format(indexValue, prettierJsOpt),
+      panelType: dslConfig.useTypescript?'tsx': 'jsx',
+      folder: `${folderName}/renderUI`,
+      panelImports: imports,
+    });
+    
+    panelDisplay.push({
+      panelName: `${filePathName}.${dslConfig.useTypescript?'tsx': 'jsx'}`,
+      panelValue: prettier.format(logicalValue, prettierJsOpt),
+      panelType: dslConfig.useTypescript?'tsx': 'jsx',
+      folder: folderName,
+      panelImports: imports,
+    });
   }
   })()
 
@@ -645,12 +662,19 @@ export default function exportMod(schema, option):IPanelDisplay[] {
         panelType: dslConfig.cssType || 'css',
         folder: `${folderName}/renderUI`,
       });
-    }else{
+    }else if(schema.componentName == 'Block' && isComponent > -1){
       panelDisplay.push({
         panelName: cssFileName,
         panelValue: cssPanelValue,
         panelType: dslConfig.cssType || 'css',
         folder: `${folderName}`,
+      });
+    }else{
+      panelDisplay.push({
+        panelName: cssFileName,
+        panelValue: cssPanelValue,
+        panelType: dslConfig.cssType || 'css',
+        folder: `${folderName}/renderUI`,
       });
     }
    
